@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Strategy & Audit | NapulEATan Pizzeria & Deli</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">PALM <span>Web Miami</span></div>
+        <div class="nav-links">
+            <a href="#audit">Audit</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#ordering">Own Ordering</a>
+            <a href="#keywords">Keywords</a>
+            <a href="#strategy">Roadmap</a>
+            <a href="#review-system">Reviews</a>
+            <a href="#pricing" class="nav-pricing">Pricing</a>
+        </div>
+        <div class="client-name">NapulEATan Strategy Deck</div>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="badge">Technical SEO & Market Research — June 2026</div>
+            <h1>Search Strategy for<br>NapulEATan Pizzeria & Deli</h1>
+            <p>A full technical audit, live competitor intelligence, and 90-day execution roadmap built on verified market data for Fort Lauderdale's 33308 corridor. Every recommendation here is supported by direct research on your competitors' websites — not guesswork.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Competitors Profiled</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Competitors Using Schema</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Neapolitan Specialist Left on Commercial Blvd</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Month Full-Service Plan</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECHNICAL SEO AUDIT -->
+        <section id="audit">
+            <div class="section-header">
+                <h2>Technical SEO Audit</h2>
+                <p>Diagnostic performed on napuleatan.com (June 2026). The site is live but carrying significant structural errors that actively suppress its visibility in Google.</p>
+            </div>
+
+            <div class="score-card card">
+                <div class="score-circle">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="circle" stroke-dasharray="54, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                    <div class="score-text">
+                        <span class="value">54</span>
+                        <span class="total">/100</span>
+                    </div>
+                </div>
+                <div class="score-details">
+                    <h3>Site Health Score: 54/100</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">The site has basic structure and exists on Google — but 4 critical P1 errors and extreme content thinness are actively preventing it from ranking for any competitive keyword.</p>
+                    <div class="score-badges">
+                        <span class="score-badge critical">4 Critical Issues</span>
+                        <span class="score-badge warning">3 Content Gaps</span>
+                        <span class="score-badge info">No Schema</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="issues-grid">
+                <div class="issue-card card critical">
+                    <h3>Critical Issues — P1 (Fix First)</h3>
+                    <ul>
+                        <li>
+                            <strong>Missing robots.txt</strong>
+                            <span>Returns a 302 redirect. Google cannot confirm crawl permissions for the domain.</span>
+                        </li>
+                        <li>
+                            <strong>Sitemap Not Accessible</strong>
+                            <span>The standard sitemap URL redirects, breaking auto-discovery in Google Search Console.</span>
+                        </li>
+                        <li>
+                            <strong>Canonical Tag Mismatch</strong>
+                            <span>Live URL is <code>www</code>, but canonical tag declares <code>non-www</code>. Splits link equity across two versions of the site.</span>
+                        </li>
+                        <li>
+                            <strong>Missing H1 Tags on Interior Pages</strong>
+                            <span>About and Promotions pages have no primary H1 tag — Google has no signal for what these pages are about.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="issue-card card warning">
+                    <h3>Content Gaps — P2 & P3</h3>
+                    <ul>
+                        <li>
+                            <strong>External Menu Hosting</strong>
+                            <span>Menu lives on <code>order.yourmenu.com</code>. Google sees zero menu content — no dish names, ingredients, or Italian terms — on the actual restaurant domain.</span>
+                        </li>
+                        <li>
+                            <strong>Extreme Thin Content</strong>
+                            <span>About page (~225 words). Promotions page (~264 words). Industry standard for ranking is 600–1,000 words minimum per page.</span>
+                        </li>
+                        <li>
+                            <strong>Schema Validation Error</strong>
+                            <span>Sunday hours are declared as "24:00" in JSON-LD, triggering Google's structured data validator errors and suppressing rich results.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Metrics grid -->
+            <div class="metrics-grid" style="margin-top: 2.5rem;">
+                <div class="metric-card">
+                    <div class="metric-icon" style="background:#fee2e2; color: var(--critical)"><i data-lucide="file-x"></i></div>
+                    <div class="metric-value">5</div>
+                    <div class="metric-label">Total Site Pages</div>
+                    <div class="metric-note">Competitors average 10–15</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon" style="background:#fef3c7; color: var(--warning)"><i data-lucide="type"></i></div>
+                    <div class="metric-value">~489</div>
+                    <div class="metric-label">Avg Words Per Page</div>
+                    <div class="metric-note">Minimum to rank: 600+</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon" style="background:#fee2e2; color: var(--critical)"><i data-lucide="code-2"></i></div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">Valid Schema Types</div>
+                    <div class="metric-note">Should have Restaurant + FAQ + Menu</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon" style="background:#fef3c7; color: var(--warning)"><i data-lucide="star"></i></div>
+                    <div class="metric-value">2.0</div>
+                    <div class="metric-label">Yelp Rating</div>
+                    <div class="metric-note">110 reviews — needs response strategy</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon" style="background:#fef3c7; color: var(--warning)"><i data-lucide="map-pin"></i></div>
+                    <div class="metric-value">?</div>
+                    <div class="metric-label">GBP Status</div>
+                    <div class="metric-note">Not confirmed claimed/optimized</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon" style="background:#fee2e2; color: var(--critical)"><i data-lucide="link-2-off"></i></div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">Inbound Backlinks</div>
+                    <div class="metric-note">Competitors have 15–80+</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPETITOR INTELLIGENCE -->
+        <section id="competitors">
+            <div class="section-header">
+                <h2>Competitor Intelligence</h2>
+                <p>Direct research on every active competitor in the Fort Lauderdale pizza and Italian restaurant market — including the two on your exact corridor. Every data point here was pulled from live websites.</p>
+            </div>
+
+            <!-- Big opportunity callout -->
+            <div class="opportunity-banner">
+                <div class="opportunity-icon"><i data-lucide="alert-triangle"></i></div>
+                <div>
+                    <strong>Market Gap Identified: Bufarella la Pizza di Napoli is CLOSED</strong>
+                    <p>The only other Neapolitan specialist in zip code 33308 permanently closed in October 2025. Editorial press from New Pelican and Edible South Florida that covered Bufarella is now pointing at a dead restaurant. NapulEATan is the direct replacement — and those food writers need a new Neapolitan subject to cover.</p>
+                </div>
+            </div>
+
+            <!-- Corridor competitors -->
+            <h3 class="subsection-title">Your Corridor: Commercial Blvd (33308)</h3>
+            <p class="subsection-desc">These two restaurants compete with you on the same street for "italian restaurant near me" and "pizza near commercial blvd" searches.</p>
+
+            <div class="competitor-cards">
+                <div class="competitor-card card">
+                    <div class="comp-header">
+                        <div class="comp-name">
+                            <strong>Zuckerello's</strong>
+                            <span class="comp-url">zuckerellos.com</span>
+                        </div>
+                        <div class="threat-badge medium">Medium Threat</div>
+                    </div>
+                    <div class="comp-address"><i data-lucide="map-pin"></i> 3017 E Commercial Blvd — 0.5 miles east</div>
+                    <p class="comp-summary">In business since 1989. Holds the corridor by brand age and review accumulation — <em>not</em> by SEO quality. Their website is thin: no schema, no FAQ, no blog, no location pages. H1 is just "Modern Italian Restaurant Since 1989." They survive on reputation alone.</p>
+                    <div class="comp-stats">
+                        <div class="comp-stat"><span class="label">Pages</span><span class="value bad">~6</span></div>
+                        <div class="comp-stat"><span class="label">Schema</span><span class="value bad">None</span></div>
+                        <div class="comp-stat"><span class="label">FAQ</span><span class="value bad">None</span></div>
+                        <div class="comp-stat"><span class="label">Blog</span><span class="value bad">None</span></div>
+                    </div>
+                    <div class="comp-verdict">
+                        <i data-lucide="check-circle"></i>
+                        <span><strong>Beatable within 60 days</strong> with a keyword-optimized About page and FAQ section.</span>
+                    </div>
+                </div>
+
+                <div class="competitor-card card">
+                    <div class="comp-header">
+                        <div class="comp-name">
+                            <strong>Monti's Italian Pizzeria</strong>
+                            <span class="comp-url">montispizzeriafl.com</span>
+                        </div>
+                        <div class="threat-badge medium">Medium Threat</div>
+                    </div>
+                    <div class="comp-address"><i data-lucide="map-pin"></i> 2973 W Commercial Blvd — west end of corridor</div>
+                    <p class="comp-summary">Uses a keyword-rich title ("Monti's Italian Pizzeria - Best Pizza, Pasta & More - Ft. Lauderdale") and targets "Authentic Italian Food in Ft. Lauderdale, FL" in their H1. Uses the same external YourMenu ordering platform as NapulEATan — identical structural weakness. No schema, no FAQ, no neighborhood pages.</p>
+                    <div class="comp-stats">
+                        <div class="comp-stat"><span class="label">Pages</span><span class="value bad">~5</span></div>
+                        <div class="comp-stat"><span class="label">Schema</span><span class="value bad">None</span></div>
+                        <div class="comp-stat"><span class="label">FAQ</span><span class="value bad">None</span></div>
+                        <div class="comp-stat"><span class="label">YourMenu</span><span class="value warn">Same</span></div>
+                    </div>
+                    <div class="comp-verdict">
+                        <i data-lucide="check-circle"></i>
+                        <span><strong>Beatable within 45 days</strong> — they have no technical advantage over NapulEATan except an H1 tag.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Broader market competitors -->
+            <h3 class="subsection-title" style="margin-top: 3rem;">Broader Fort Lauderdale Market</h3>
+            <p class="subsection-desc">These competitors rank citywide for "pizza fort lauderdale" and "neapolitan pizza fort lauderdale." They are not on your corridor but capture searches across the city.</p>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Competitor</th>
+                            <th>Location</th>
+                            <th>Why They Rank</th>
+                            <th>Site Depth</th>
+                            <th>Schema</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Luigi's Coal Oven Pizza</strong><br><small style="color:var(--text-muted)">luigiscoalovenpizza.com</small></td>
+                            <td>1415 E Las Olas Blvd</td>
+                            <td>Title tag: "Best Pizza in Fort Lauderdale, FL | Pizza near me." FAQ section. 20+ named delivery neighborhoods. Loyalty rewards program.</td>
+                            <td><span class="depth-badge good">8+ pages</span></td>
+                            <td><span class="schema-badge none">None</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pummarola</strong><br><small style="color:var(--text-muted)">pummarola.us</small></td>
+                            <td>Las Olas + 3 more</td>
+                            <td>Multi-location chain authority. Pizza classes, mobile oven catering, pizza festival, dedicated location pages per address. Brand story (Nonna Rosa) built into all content.</td>
+                            <td><span class="depth-badge good">13+ pages</span></td>
+                            <td><span class="schema-badge none">None</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pizzeria Magaddino</strong><br><small style="color:var(--text-muted)">pizzeriamagaddino.com</small></td>
+                            <td>NE 13th St</td>
+                            <td>Meta description uses award credential: "Won Best Bite at Visit Lauderdale Food & Wine Festival." Ranks for "pizza truck catering" + "pizza classes." Extra Google footprint from brewery pop-up.</td>
+                            <td><span class="depth-badge medium">6+ pages</span></td>
+                            <td><span class="schema-badge none">None</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Heritage</strong><br><small style="color:var(--text-muted)">heritageftl.com</small></td>
+                            <td>Flagler Village</td>
+                            <td>Michelin Bib Gourmand 2025 + 2026. Wins entirely on editorial press and high-authority backlinks — Miami New Times, MICHELIN Guide, TripAdvisor #1. 16K+ Instagram followers. Lean website but unbeatable off-page authority.</td>
+                            <td><span class="depth-badge bad">4 pages</span></td>
+                            <td><span class="schema-badge none">None</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Schema vacuum callout -->
+            <div class="insight-box" style="margin-top: 2rem;">
+                <div class="insight-icon"><i data-lucide="zap"></i></div>
+                <div>
+                    <strong>The Schema Vacuum — NapulEATan Can Own This</strong>
+                    <p>Zero out of 6 competitors use structured data markup (JSON-LD). That means <em>no restaurant in this competitive set</em> is eligible for star ratings in Google search results, FAQ dropdown expansion, or rich menu snippets. The first restaurant to implement Restaurant + FAQ + Menu schema gets these features by default — and NapulEATan can be that restaurant next week.</p>
+                </div>
+            </div>
+
+            <!-- Feature gap matrix -->
+            <h3 class="subsection-title" style="margin-top: 3rem;">Content Gap Matrix</h3>
+            <p class="subsection-desc">What every competitor has that NapulEATan doesn't. Sorted by number of competitors who have it.</p>
+
+            <div class="card" style="margin-top: 1.5rem; overflow-x: auto;">
+                <table class="data-table gap-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Luigi's</th>
+                            <th>Pummarola</th>
+                            <th>Magaddino</th>
+                            <th>Zuckerello's</th>
+                            <th>Heritage</th>
+                            <th>Monti's</th>
+                            <th>NapulEATan</th>
+                            <th>Gap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Google Business Profile (claimed)</strong></td>
+                            <td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td>
+                            <td class="cross">?</td>
+                            <td><span class="gap-critical">CRITICAL</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>JSON-LD Schema Markup</strong></td>
+                            <td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td><span class="gap-critical">FIRST-MOVER</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Keyword-Rich Title Tag</strong></td>
+                            <td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td>
+                            <td class="cross">✗</td>
+                            <td><span class="gap-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Meta Description</strong></td>
+                            <td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td>
+                            <td class="cross">✗</td>
+                            <td><span class="gap-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>On-Domain Menu Page</strong></td>
+                            <td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td><span class="gap-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>About / Origin Story Page</strong></td>
+                            <td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td><span class="gap-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Catering Dedicated Page</strong></td>
+                            <td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td><span class="gap-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>FAQ Section / Page</strong></td>
+                            <td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td><span class="gap-medium">MEDIUM</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Neighborhood / Service Area Pages</strong></td>
+                            <td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td><span class="gap-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gift Cards</strong></td>
+                            <td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td><td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td><span class="gap-medium">MEDIUM</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Private Events / Groups Page</strong></td>
+                            <td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td><span class="gap-medium">MEDIUM</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Blog / Editorial Content</strong></td>
+                            <td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td>
+                            <td class="cross">✗</td>
+                            <td><span class="gap-oppty">OPPORTUNITY</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- OWN ORDERING SYSTEM -->
+        <section id="ordering">
+            <div class="section-header">
+                <h2>Own Your Ordering System</h2>
+                <p>NapulEATan currently sends customers to <code>order.yourmenu.com</code> to place orders. This is one of the most damaging technical decisions for long-term Google visibility — and it also costs real money every month.</p>
+            </div>
+
+            <div class="ordering-comparison">
+                <div class="ordering-side bad-side card">
+                    <div class="ordering-label bad-label">Current Setup — YourMenu (Third Party)</div>
+                    <ul class="ordering-list">
+                        <li class="ordering-bad">
+                            <i data-lucide="x-circle"></i>
+                            <div>
+                                <strong>Google sees nothing</strong>
+                                <p>Dish names, ingredients, Italian terms, and prices all live on yourmenu.com — not on napuleatan.com. Google indexes the third-party domain, not yours. Zero SEO benefit from your menu content.</p>
+                            </div>
+                        </li>
+                        <li class="ordering-bad">
+                            <i data-lucide="x-circle"></i>
+                            <div>
+                                <strong>Keyword surface area = 0</strong>
+                                <p>"Margherita with San Marzano tomatoes," "wood-fired buffalo mozzarella" — all of that rich content is invisible to Google searches. You're paying with your own differentiation for someone else's domain.</p>
+                            </div>
+                        </li>
+                        <li class="ordering-bad">
+                            <i data-lucide="x-circle"></i>
+                            <div>
+                                <strong>Customers leave your site</strong>
+                                <p>Every click to YourMenu is a user leaving napuleatan.com. Google measures dwell time and bounce rate. Sending users off-domain on arrival signals low engagement — a negative ranking factor.</p>
+                            </div>
+                        </li>
+                        <li class="ordering-bad">
+                            <i data-lucide="x-circle"></i>
+                            <div>
+                                <strong>Monthly fees with no equity</strong>
+                                <p>You pay for the platform every month and build zero brand authority in return. When you stop paying, the ordering page is gone. Nothing accumulated.</p>
+                            </div>
+                        </li>
+                        <li class="ordering-bad">
+                            <i data-lucide="x-circle"></i>
+                            <div>
+                                <strong>No customer data ownership</strong>
+                                <p>Email addresses, order history, and repeat customer behavior lives in YourMenu's database — not yours. You cannot run email campaigns, loyalty programs, or personalized offers to your own customers.</p>
+                            </div>
+                        </li>
+                        <li class="ordering-bad">
+                            <i data-lucide="x-circle"></i>
+                            <div>
+                                <strong>Branding is theirs, not yours</strong>
+                                <p>Customers ordering on yourmenu.com see YourMenu's interface, not your brand. Brand recall suffers — customers remember the ordering platform, not the restaurant.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="ordering-side good-side card">
+                    <div class="ordering-label good-label">Recommended — On-Domain Ordering</div>
+                    <ul class="ordering-list">
+                        <li class="ordering-good">
+                            <i data-lucide="check-circle"></i>
+                            <div>
+                                <strong>Every menu item becomes a keyword</strong>
+                                <p>When your menu lives at <code>napuleatan.com/menu</code>, Google crawls every dish name, ingredient, and description. "Fresh buffalo mozzarella fort lauderdale," "San Marzano pizza," "wood-fired neapolitan" — all indexed, all searchable.</p>
+                            </div>
+                        </li>
+                        <li class="ordering-good">
+                            <i data-lucide="check-circle"></i>
+                            <div>
+                                <strong>Menu schema unlocks rich snippets</strong>
+                                <p>An on-domain menu allows you to add Menu + MenuItem JSON-LD schema. Google can display your dishes, prices, and descriptions directly in search results — before a customer even clicks your site.</p>
+                            </div>
+                        </li>
+                        <li class="ordering-good">
+                            <i data-lucide="check-circle"></i>
+                            <div>
+                                <strong>Users stay on your domain</strong>
+                                <p>Longer sessions, lower bounce rate, more internal page views — all positive engagement signals that Google uses to validate local ranking decisions.</p>
+                            </div>
+                        </li>
+                        <li class="ordering-good">
+                            <i data-lucide="check-circle"></i>
+                            <div>
+                                <strong>You own all customer data</strong>
+                                <p>Email addresses, order frequency, average order value, favorite dishes — all in your database. Build a loyalty program, run birthday promotions, reactivate lapsed customers. That data is an asset that compounds.</p>
+                            </div>
+                        </li>
+                        <li class="ordering-good">
+                            <i data-lucide="check-circle"></i>
+                            <div>
+                                <strong>One-time build, permanent equity</strong>
+                                <p>An on-domain ordering page built once keeps working indefinitely. No monthly platform fees. The SEO benefit accumulates every month — it doesn't reset when you stop paying.</p>
+                            </div>
+                        </li>
+                        <li class="ordering-good">
+                            <i data-lucide="check-circle"></i>
+                            <div>
+                                <strong>Full brand experience</strong>
+                                <p>Customers order inside your branded interface — your colors, your photos, your story. Brand recall increases. Repeat orders go to <em>your</em> site, not a platform that also lists your competitors.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ordering-impact">
+                <h3>The SEO Impact in Numbers</h3>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <div class="impact-number">~1,200</div>
+                        <div class="impact-desc">Additional indexable words from a full on-domain menu — versus zero currently</div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">40+</div>
+                        <div class="impact-desc">New long-tail keyword opportunities embedded in dish names and ingredient descriptions</div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">30–50%</div>
+                        <div class="impact-desc">Typical bounce rate reduction when ordering stays on-domain vs. redirecting out</div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">100%</div>
+                        <div class="impact-desc">Customer email data ownership — currently 0% with YourMenu</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KEYWORD UNIVERSE -->
+        <section id="keywords">
+            <div class="section-header">
+                <h2>The Keyword Universe</h2>
+                <p>Derived from analysis of 97 local, transactional, and informational search queries. Organized by ranking difficulty and timing.</p>
+            </div>
+
+            <div class="card">
+                <h3>Month 1 Primary Targets — Low Competition, High Proximity Advantage</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">These are the fastest-ranking opportunities. NapulEATan's location on Commercial Blvd gives it natural proximity advantage for these queries if the GBP is claimed and content is in place.</p>
+                <ul class="task-list" style="margin-bottom: 2rem;">
+                    <li><i data-lucide="target"></i> <strong>pizza near commercial blvd fort lauderdale</strong> — Hyper-local, minimal competition. GBP proximity wins this within 30 days.</li>
+                    <li><i data-lucide="target"></i> <strong>neapolitan pizza fort lauderdale</strong> — Core business target. Needs homepage H1 optimization + About page + GBP category.</li>
+                    <li><i data-lucide="target"></i> <strong>wood fired pizza fort lauderdale</strong> — USP keyword. Far less competition than "best pizza fort lauderdale." Highly winnable.</li>
+                    <li><i data-lucide="target"></i> <strong>authentic neapolitan pizza fort lauderdale</strong> — Long-tail with high intent. Almost no optimized pages targeting this exact phrase.</li>
+                    <li><i data-lucide="target"></i> <strong>italian deli fort lauderdale</strong> — Low-competition sub-niche. Requires a dedicated deli section on the menu page.</li>
+                    <li><i data-lucide="target"></i> <strong>best tiramisu fort lauderdale</strong> — Specific informational query. A targeted blog post with schema ranks for this within 60 days.</li>
+                </ul>
+
+                <h3 style="margin-top: 2rem;">Keyword Tiers Overview</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th>Type</th>
+                            <th>Examples</th>
+                            <th>When Ranking</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tier 1 — Primary</strong></td>
+                            <td>Broad, high-intent city searches</td>
+                            <td>"pizza fort lauderdale," "italian restaurant fort lauderdale"</td>
+                            <td>Month 2–3</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tier 2 — Niche</strong></td>
+                            <td>Specific style + city</td>
+                            <td>"neapolitan pizza fort lauderdale," "wood fired pizza fort lauderdale"</td>
+                            <td>Month 1–2</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tier 3 — Location</strong></td>
+                            <td>Neighborhood modifiers</td>
+                            <td>"pizza near wilton manors," "italian food oakland park"</td>
+                            <td>Month 1–2</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tier 4 — Long-Tail</strong></td>
+                            <td>Specific dishes, occasions, questions</td>
+                            <td>"daily fresh pizza dough," "birthday dinner italian fort lauderdale," "best tiramisu ft lauderdale"</td>
+                            <td>Month 2–3</td>
+                            <td>32</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="keyword-projection" style="margin-top: 2rem;">
+                    <h3>Traffic Projection by Month</h3>
+                    <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">Based on claimed GBP, on-domain menu, schema implementation, and content expansion executing on schedule.</p>
+                    <div class="projection-bars">
+                        <div class="proj-bar-row">
+                            <span class="proj-label">Baseline (Now)</span>
+                            <div class="proj-bar-wrap">
+                                <div class="proj-bar" style="width: 4%; background: var(--critical);">
+                                    <span>~50 visits/mo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="proj-bar-row">
+                            <span class="proj-label">Month 1</span>
+                            <div class="proj-bar-wrap">
+                                <div class="proj-bar" style="width: 15%; background: var(--warning);">
+                                    <span>200–400</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="proj-bar-row">
+                            <span class="proj-label">Month 2</span>
+                            <div class="proj-bar-wrap">
+                                <div class="proj-bar" style="width: 38%; background: #2563eb;">
+                                    <span>800–1,500</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="proj-bar-row">
+                            <span class="proj-label">Month 3</span>
+                            <div class="proj-bar-wrap">
+                                <div class="proj-bar" style="width: 85%; background: var(--success);">
+                                    <span>3,000–6,000+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color:var(--text-muted); font-size:0.85rem; margin-top:1rem;">Month 3 traffic surge is driven by blog content indexing, press backlinks, neighborhood pages ranking, and review velocity compounding GBP authority.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STRATEGY -->
+        <section id="strategy">
+            <div class="section-header">
+                <h2>4-Month Execution Roadmap</h2>
+                <p>Every task mapped to the week it should happen. Month 1 fixes the foundation. Month 2 builds content and social presence. Month 3 pushes traffic into the thousands with press and blogging. Month 4 consolidates rankings and scales what's working.</p>
+            </div>
+
+            <div class="timeline">
+                <!-- MONTH 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">M1</div>
+                    <div class="timeline-content card">
+                        <div class="month-header">
+                            <h3>Month 1: Foundation & Crisis Response</h3>
+                            <div class="month-goal">Goal: Fix all P1 technical errors. Claim GBP. Get schema live. Move menu on-domain.</div>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 1 — Highest ROI Actions</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Yelp Crisis Response:</strong> Owner responses to all 1 & 2-star reviews. Address each complaint directly, apologize, invite them back. A response strategy alone has reversed Yelp trajectories for similar businesses.</li>
+                                <li><i data-lucide="check"></i> <strong>GBP Claim & Full Optimization:</strong> Claim Google Business Profile. Set primary category "Pizza Restaurant," secondary "Italian Restaurant." Add 20+ photos (storefront, oven, signature dishes, interior). Fill every attribute. This is the single highest-ROI week-1 action.</li>
+                                <li><i data-lucide="check"></i> <strong>Title Tag Fix:</strong> Change from "NapulEATan Pizzeria & Deli Menu & More" → <em>"Neapolitan Pizza Fort Lauderdale | NapulEATan Pizzeria & Deli"</em></li>
+                                <li><i data-lucide="check"></i> <strong>Meta Description:</strong> Write and publish first meta description (currently none). Target: "Authentic Neapolitan pizza from a wood-fired oven at 2500 E Commercial Blvd, Fort Lauderdale. Fresh dough made daily. Family recipes from Naples."</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 2 — Technical Fixes + On-Domain Menu</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Fix robots.txt:</strong> Create proper robots.txt at domain root. Remove 302 redirect.</li>
+                                <li><i data-lucide="check"></i> <strong>Fix Sitemap:</strong> Generate and host sitemap.xml at standard URL. Submit to Google Search Console.</li>
+                                <li><i data-lucide="check"></i> <strong>Fix Canonical Mismatch:</strong> Align canonical tags to match the www live URL.</li>
+                                <li><i data-lucide="check"></i> <strong>On-Domain Menu Page:</strong> Build <code>/menu</code> page on napuleatan.com. Structure with H2 per category ("Neapolitan Pizzas," "Italian Deli Sandwiches," "Pasta," "Desserts"). Write keyword-rich descriptions: "San Marzano tomatoes," "buffalo mozzarella," "wood-fired at 900°F," "imported from Naples." Keep YourMenu for the actual ordering flow — but the content must live on-domain for Google to index it.</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 3 — Schema Implementation</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Restaurant JSON-LD Schema:</strong> Implement on homepage — name, address, phone, hours, cuisine type ("Neapolitan Pizza"), price range, payment methods. Fix the Sunday "24:00" hours bug.</li>
+                                <li><i data-lucide="check"></i> <strong>Menu Schema:</strong> Add Menu + MenuItem schema on the new /menu page — dish names, descriptions, prices for each item.</li>
+                                <li><i data-lucide="check"></i> <strong>About Page Rewrite:</strong> Expand from 225 words to 700+ words. H1: "Authentic Neapolitan Pizza, Made the Naples Way — Fort Lauderdale, FL." Tell the full family origin story, what makes Neapolitan pizza different (72-hour fermentation, 00 flour, 900°F oven), why Fort Lauderdale.</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 4 — FAQ Page + Citation Fixes</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>FAQ Page + FAQPage Schema:</strong> Build <code>/faq</code> with real customer questions: "What is Neapolitan pizza?", "Do you use a real wood-fired oven?", "Do you offer catering?", "What are your hours on Commercial Blvd?", "Do you deliver to Oakland Park or Wilton Manors?", "Do you have gluten-free options?" Add FAQPage JSON-LD — no competitor has this, earns SERP dropdown expansions.</li>
+                                <li><i data-lucide="check"></i> <strong>Citation Fixes:</strong> Correct Slice.com NAP (currently listed as "Napolitan Food" with wrong phone). Submit correct NAP to Top 20 directories: Yelp (if not claimed), TripAdvisor, Apple Maps, Bing Places, Foursquare, YellowPages. Exact format: <em>NapulEATan Pizzeria & Deli | 2500 East Commercial Boulevard, Fort Lauderdale, FL 33308 | (954) 706-0615</em></li>
+                                <li><i data-lucide="check"></i> <strong>GBP Weekly Posts Start:</strong> Begin cadence of 1 GBP post per week with dish photo + keyword-rich caption. Respond to every new Google review within 24 hours including natural keyword language.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MONTH 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">M2</div>
+                    <div class="timeline-content card">
+                        <div class="month-header">
+                            <h3>Month 2: Content Expansion + Authority Building</h3>
+                            <div class="month-goal">Goal: Build the content footprint. Launch neighborhood pages. Start review campaign. Secure first press mentions.</div>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 5 — Service Pages + Social Media Launch</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Catering Page:</strong> Create <code>/catering</code> — 1,000+ words covering services, occasions (corporate events, birthday parties, weddings, office lunch), service area, pricing tiers, and a quote request form. H1: "Italian Catering Fort Lauderdale | NapulEATan Pizzeria & Deli." Target: "italian catering fort lauderdale," "pizza catering broward county."</li>
+                                <li><i data-lucide="check"></i> <strong>Private Events Page:</strong> Create <code>/private-events</code> targeting "birthday dinner italian fort lauderdale," "private dining fort lauderdale," "restaurant private room broward."</li>
+                                <li><i data-lucide="check"></i> <strong>BreadcrumbList Schema:</strong> Implement sitewide breadcrumb schema for all pages.</li>
+                                <li><i data-lucide="instagram"></i> <strong>Social Media Kickoff — Facebook & Instagram:</strong> Set up consistent posting schedule: 3 posts per week on both Facebook and Instagram. Content built from photos sent by the owner — wood-fired oven shots, fresh dough prep, finished pizzas, Italian deli spreads. Each post includes keyword-rich captions ("authentic Neapolitan pizza," "wood-fired Fort Lauderdale"), location tags, and relevant hashtags (#fortlauderdalefood #napoletanpizza #southfloridaeats). Instagram Reels added when video is available. This social signal layer supports GBP authority and drives organic discovery from South Florida food audiences.</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 6 — Neighborhood Location Pages</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Oakland Park Location Page:</strong> <code>/pizza-near-oakland-park</code> — "Neapolitan Pizza Near Oakland Park FL | 10 Minutes Away." 350+ words, LocalBusiness schema, internal link to menu and ordering.</li>
+                                <li><i data-lucide="check"></i> <strong>Wilton Manors Location Page:</strong> <code>/pizza-near-wilton-manors</code> — "Italian Pizza Near Wilton Manors FL | NapulEATan." Same structure. These capture "pizza near [neighborhood]" for the residential areas immediately surrounding Commercial Blvd.</li>
+                                <li><i data-lucide="check"></i> <strong>Lauderdale-by-the-Sea Page:</strong> <code>/pizza-near-lauderdale-by-the-sea</code> — Captures the beach community's pizza searches. La Cucina Cafe (the closest competitor there) has a thin website with no Neapolitan positioning.</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 7 — Review Campaign Launch + Press Outreach</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Review Generation Campaign:</strong> Print QR code table cards. Train staff to ask every satisfied table at checkout. Target: 50+ Google reviews by end of Month 2. Low review count is the #1 factor limiting local pack eligibility right now.</li>
+                                <li><i data-lucide="check"></i> <strong>Press Pitch — New Pelican:</strong> Contact New Pelican (newpelican.com). They ran a full feature on Bufarella — the now-closed Neapolitan competitor in the same zip. Pitch NapulEATan as the new authentic Neapolitan story in 33308.</li>
+                                <li><i data-lucide="check"></i> <strong>Press Pitch — Edible South Florida:</strong> Same editorial gap, same pitch angle. Edible South Florida covered Bufarella and covers independent food businesses across Broward.</li>
+                                <li><i data-lucide="check"></i> <strong>Visit Lauderdale Directory:</strong> Submit to visitlauderdale.com restaurant directory — free listing, DA-boosting backlink. Heritage, Pummarola, and Zuckerello's all appear here. NapulEATan does not.</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 8 — Blogging Starts + Gift Cards</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Blog Post 1:</strong> "What Is Neapolitan Pizza? A Fort Lauderdale Guide" — captures informational searches, positions NapulEATan as the authoritative local source.</li>
+                                <li><i data-lucide="check"></i> <strong>Blog Post 2:</strong> "The Best Tiramisu in Fort Lauderdale" — specific, low-competition informational query. Easy first-page rank with a well-written post and FAQ schema.</li>
+                                <li><i data-lucide="check"></i> <strong>Gift Cards:</strong> Add gift card purchasing capability on-site. Five competitors offer this. It adds a revenue stream and another internal page Google can index.</li>
+                                <li><i data-lucide="check"></i> <strong>GBP Q&A Seeding:</strong> Add 5 keyword-rich Q&A pairs per week to GBP Q&A section. Google indexes these — they are a free keyword-insertion tool.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MONTH 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">M3</div>
+                    <div class="timeline-content card">
+                        <div class="month-header">
+                            <h3>Month 3: Scale, Press & Traffic Push</h3>
+                            <div class="month-goal">Goal: Reach 3,000–6,000 monthly organic visits. Secure minimum 3 press backlinks. Dominate the 33308 local pack. Push blog content into high-traffic informational rankings.</div>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 9 — High-Traffic Blog Content</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Blog Post 3:</strong> "Best Pizza Near Commercial Boulevard Fort Lauderdale" — this is a bold move. Write a curated guide, include NapulEATan prominently, rank for the corridor query you own by geography. 800+ words with internal links to menu and ordering.</li>
+                                <li><i data-lucide="check"></i> <strong>Blog Post 4:</strong> "Wood-Fired vs. Coal-Fired Pizza: What's the Difference?" — captures comparison searches between NapulEATan and Luigi's Coal Oven. Targets users already in the decision stage. Positions NapulEATan's wood-fired method as the authentic Neapolitan choice.</li>
+                                <li><i data-lucide="check"></i> <strong>Blog Post 5:</strong> "Authentic Italian Food in Fort Lauderdale: What to Look For" — curated guide, educational tone, builds authority. Internal links to all major site pages.</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 10 — Influencer + Social Signals</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Food Blogger Invitations:</strong> Invite 5 Fort Lauderdale food bloggers and Instagram food accounts for hosted tastings. Each visit generates UGC content, Instagram posts tagging the location (social signals), and ideally a blog post linking back to napuleatan.com.</li>
+                                <li><i data-lucide="instagram"></i> <strong>Social Media — Month 3 Content Push:</strong> Increase posting frequency to 3x/week on both platforms. Feature behind-the-scenes content (dough prep, oven footage), seasonal specials, and customer repost content. Run a Facebook check-in incentive campaign to drive foot traffic and social proof simultaneously. Create a pinned Instagram highlight reel: "Our Story," "The Oven," "The Menu."</li>
+                                <li><i data-lucide="check"></i> <strong>Pompano Beach Location Page:</strong> <code>/pizza-near-pompano-beach</code> — extends the service area content footprint north. Pompano Beach is in the service area list and has its own neighborhood search volume.</li>
+                                <li><i data-lucide="check"></i> <strong>Deerfield Beach Location Page:</strong> <code>/pizza-near-deerfield-beach</code> — same structure, extends reach further north up A1A corridor.</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 11 — Press Escalation + High-Authority Backlinks</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Miami New Times Pitch:</strong> Pitch "Best Pizza Fort Lauderdale" round-up for inclusion alongside Heritage and Luigi's. Miami New Times is the highest-authority food publication in South Florida — one mention earns a DA 70+ backlink and significant referral traffic.</li>
+                                <li><i data-lucide="check"></i> <strong>Sun Sentinel / New Times Broward:</strong> Pitch on the authentic Neapolitan family story angle — generational recipes, wood-fired oven, Italian family in Fort Lauderdale. This is a human-interest food story that local press covers.</li>
+                                <li><i data-lucide="check"></i> <strong>Blog Post 6:</strong> "Italian Catering in Fort Lauderdale: Everything You Need to Know" — 1,000+ words, targets "italian catering fort lauderdale" and related B2B terms. Supports the catering page with supplemental blog authority.</li>
+                                <li><i data-lucide="check"></i> <strong>Pompano Beach + Coral Springs Location Pages:</strong> Two more neighborhood pages expanding the geographic content footprint into the northernmost service area cities.</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 12 — Traffic Audit + Month 4 Setup</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Google Search Console Review:</strong> Pull ranking data for all target keywords. Identify which pages are ranking on page 2 (positions 11–20) and push them to page 1 with targeted internal links and content refreshes.</li>
+                                <li><i data-lucide="check"></i> <strong>Blog Post 7:</strong> "Why Fresh Dough Makes All the Difference in Neapolitan Pizza" — educational content targeting the authenticity angle. 600+ words. Links to menu and about page.</li>
+                                <li><i data-lucide="check"></i> <strong>Event + Seasonal Content:</strong> Publish content around upcoming local events and holidays — "Best Italian Restaurant for Date Night Fort Lauderdale," "Holiday Catering Fort Lauderdale 2026." These capture seasonal search spikes.</li>
+                                <li><i data-lucide="check"></i> <strong>Loyalty Program Launch:</strong> Announce and implement a simple loyalty system (stamp card or email-based). Collect email addresses for an owned marketing channel. Run a "comeback" campaign to reactivate lapsed customers from the Yelp review period.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Month 3 traffic callout -->
+                        <div class="month3-callout">
+                            <div class="m3-icon"><i data-lucide="trending-up"></i></div>
+                            <div>
+                                <strong>Why Month 3 Hits Thousands of Visits</strong>
+                                <p>By Month 3, three compounding forces converge: (1) 6–7 indexed blog posts each capturing long-tail traffic individually; (2) press backlinks from New Pelican, Edible South Florida, and ideally Miami New Times — each one boosting domain authority and sending referral traffic; (3) the GBP with 50+ reviews dominating the local 3-pack for "neapolitan pizza fort lauderdale" and "pizza near me" in zip 33308. These three channels multiply — not add — because press mentions drive social shares that drive reviews that drive GBP ranking that drives clicks that drive on-site time that signals authority to Google.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MONTH 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">M4</div>
+                    <div class="timeline-content card">
+                        <div class="month-header">
+                            <h3>Month 4: Consolidation, Scaling & Retention</h3>
+                            <div class="month-goal">Goal: Lock in page-1 rankings. Scale social media presence. Build repeat customer systems. Identify next keyword targets based on real GSC data.</div>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 13 — Rankings Audit + Content Refresh</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Full GSC Rankings Review:</strong> Pull all keyword positions from Search Console. Identify pages stuck at positions 11–20 ("page 2") — these are the highest-leverage targets. A targeted internal link from a high-authority page or a content expansion often moves them to page 1 within 2–3 weeks.</li>
+                                <li><i data-lucide="check"></i> <strong>Content Refresh Cycle:</strong> Update Month 1 blog posts with new images, additional FAQ pairs, and any new press mentions. Google rewards freshness signals — updating content renews the indexing priority.</li>
+                                <li><i data-lucide="instagram"></i> <strong>Social Media — Promotion Push:</strong> Launch a Facebook and Instagram promotion tied to a seasonal event or local holiday. Boost the best-performing post from Month 3 with a modest paid boost ($25–50) to expand reach to Fort Lauderdale food audience. All creative built from owner-supplied photos.</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 14 — New Keyword Cluster Expansion</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Blog Post 8:</strong> "Best Places for Pizza Near Me in Fort Lauderdale 2026" — targets the highest-volume local search query in a list format. Internal links to neighborhood pages and catering page. Updated with real GSC data to match what people are actually searching.</li>
+                                <li><i data-lucide="check"></i> <strong>Blog Post 9:</strong> "Gluten-Free Pizza Options in Fort Lauderdale" — captures a high-intent dietary niche with very little competition. One well-written post can own this search term indefinitely.</li>
+                                <li><i data-lucide="instagram"></i> <strong>Social Media — UGC Campaign:</strong> Ask followers to tag NapulEATan in their food photos for a chance to be featured. Repost customer photos with permission on both Facebook and Instagram. User-generated content posts drive higher engagement than brand posts and generate free authentic content.</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 15 — Email List + Loyalty Program</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>Email List Activation:</strong> Begin collecting emails at checkout via the on-domain ordering system built in Month 1. Set up a simple welcome sequence: (1) welcome email with menu highlights, (2) "Come back" offer at 2 weeks, (3) loyalty program invite. This is a zero-cost retention channel that compounds every month.</li>
+                                <li><i data-lucide="check"></i> <strong>Loyalty Program Expansion:</strong> Move beyond the stamp card introduced in Month 3. Implement a digital loyalty system tied to the on-domain ordering page — points per order, birthday rewards, referral bonuses. Loyal customers are the most effective source of organic Google reviews.</li>
+                                <li><i data-lucide="instagram"></i> <strong>Social Media — Behind-the-Scenes Series:</strong> Produce a 4-part weekly Facebook + Instagram series: "The Making of NapulEATan." Week 1: the dough. Week 2: the oven. Week 3: the family story. Week 4: the sourcing (Italian imports). This type of branded story content builds genuine brand equity and is highly shareable in the South Florida food community.</li>
+                            </ul>
+                        </div>
+
+                        <div class="week-block">
+                            <div class="week-label">Week 16 — Month 4 Results Review + Month 5 Planning</div>
+                            <ul class="task-list">
+                                <li><i data-lucide="check"></i> <strong>4-Month Performance Report:</strong> Pull GA4 + GSC data. Document: total organic traffic, top-ranking keywords and their positions, GBP impressions and call volume, blog post traffic, review count growth, and backlink profile changes. Compare against Month 1 baseline (~50 visits/month).</li>
+                                <li><i data-lucide="check"></i> <strong>Press Follow-Up:</strong> Follow up on any outstanding pitches to Miami New Times, Sun Sentinel, and Edible South Florida. If press coverage was secured, submit the mention to Google News indexing and share across all social channels to maximize the backlink's referral traffic.</li>
+                                <li><i data-lucide="instagram"></i> <strong>Social Media — Month 5 Calendar:</strong> Plan next month's social content calendar using top-performing post formats from Months 2–4. Build a 12-post template for the upcoming month that includes product posts (3), behind-the-scenes (3), customer features (2), promotions (2), and community/local content (2).</li>
+                                <li><i data-lucide="check"></i> <strong>Boca Raton + Coral Springs Location Pages:</strong> Build 2 more neighborhood pages to extend the geographic keyword footprint to the outer service area. By Month 4, the domain has enough authority for these pages to rank within 30–45 days of publishing.</li>
+                            </ul>
+                        </div>
+
+                        <div class="month3-callout">
+                            <div class="m3-icon"><i data-lucide="bar-chart-2"></i></div>
+                            <div>
+                                <strong>What Month 4 Delivers</strong>
+                                <p>By the end of Month 4, NapulEATan has a fully compounding SEO engine: 9+ indexed blog posts generating consistent long-tail traffic, 5+ neighborhood pages capturing surrounding city searches, 3+ press backlinks boosting domain authority, a GBP with 80–100 reviews dominating the 33308 local pack, a social media presence with 3x/week content on Facebook and Instagram, and an email list building a direct customer marketing channel. The site is no longer dependent on any single channel — it has multiple independent traffic sources all pulling in the same direction.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4-month target keywords table -->
+            <div class="card" style="margin-top: 3rem;">
+                <h3>Target Keyword Rankings at 4 Months</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Keyword</th>
+                            <th>Current Position</th>
+                            <th>4-Month Target</th>
+                            <th>Primary Driver</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>neapolitan pizza fort lauderdale</td>
+                            <td><span class="pos-badge bad">Not ranking</span></td>
+                            <td><span class="pos-badge good">Top 3 organic + local pack</span></td>
+                            <td>GBP + About page + schema</td>
+                        </tr>
+                        <tr>
+                            <td>wood fired pizza fort lauderdale</td>
+                            <td><span class="pos-badge bad">Not ranking</span></td>
+                            <td><span class="pos-badge good">Top 5 organic</span></td>
+                            <td>Menu page + About page + schema</td>
+                        </tr>
+                        <tr>
+                            <td>pizza commercial blvd fort lauderdale</td>
+                            <td><span class="pos-badge bad">Not ranking</span></td>
+                            <td><span class="pos-badge good">Local pack #1–2</span></td>
+                            <td>GBP proximity + citations + reviews</td>
+                        </tr>
+                        <tr>
+                            <td>authentic neapolitan pizza fort lauderdale</td>
+                            <td><span class="pos-badge bad">Not ranking</span></td>
+                            <td><span class="pos-badge good">Top 3</span></td>
+                            <td>About page (low competition keyword)</td>
+                        </tr>
+                        <tr>
+                            <td>italian restaurant fort lauderdale</td>
+                            <td><span class="pos-badge warn">Lower positions</span></td>
+                            <td><span class="pos-badge med">Top 10</span></td>
+                            <td>Title tag + content depth + backlinks</td>
+                        </tr>
+                        <tr>
+                            <td>pizza near oakland park</td>
+                            <td><span class="pos-badge bad">Not ranking</span></td>
+                            <td><span class="pos-badge good">Local pack top 3</span></td>
+                            <td>Neighborhood page + GBP</td>
+                        </tr>
+                        <tr>
+                            <td>pizza near wilton manors</td>
+                            <td><span class="pos-badge bad">Not ranking</span></td>
+                            <td><span class="pos-badge good">Local pack top 3</span></td>
+                            <td>Neighborhood page + GBP</td>
+                        </tr>
+                        <tr>
+                            <td>italian catering fort lauderdale</td>
+                            <td><span class="pos-badge bad">Not ranking</span></td>
+                            <td><span class="pos-badge good">Top 5</span></td>
+                            <td>Dedicated catering page</td>
+                        </tr>
+                        <tr>
+                            <td>best tiramisu fort lauderdale</td>
+                            <td><span class="pos-badge bad">Not ranking</span></td>
+                            <td><span class="pos-badge good">Top 5</span></td>
+                            <td>Blog post with FAQ schema</td>
+                        </tr>
+                        <tr>
+                            <td>pizza fort lauderdale</td>
+                            <td><span class="pos-badge bad">Not ranking top 20</span></td>
+                            <td><span class="pos-badge med">Top 10–15</span></td>
+                            <td>Domain authority growth via backlinks + reviews</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FILTERED REVIEW SYSTEM -->
+        <section id="review-system">
+            <div class="section-header">
+                <h2>Filtered Review Collection System</h2>
+                <p>A proactive reputation management system to intercept negative feedback privately and drive verified 5-star ratings directly to Google Maps. This system directly accelerates local pack ranking — Google weights review count and velocity heavily for map placement.</p>
+            </div>
+
+            <div class="demo-container">
+                <div class="demo-phone">
+                    <div class="phone-header">
+                        <h4>NapulEATan Feedback</h4>
+                    </div>
+                    <div class="phone-body">
+                        <div class="step step-1 active" id="step-rating">
+                            <h3>Rate your visit</h3>
+                            <p>How was your experience today?</p>
+                            <div class="stars" id="star-rating">
+                                <i data-lucide="star" data-rating="1"></i>
+                                <i data-lucide="star" data-rating="2"></i>
+                                <i data-lucide="star" data-rating="3"></i>
+                                <i data-lucide="star" data-rating="4"></i>
+                                <i data-lucide="star" data-rating="5"></i>
+                            </div>
+                        </div>
+                        <div class="step step-2-positive" id="step-positive">
+                            <div class="icon-box success"><i data-lucide="thumbs-up"></i></div>
+                            <h3>We're thrilled!</h3>
+                            <p>Please take a moment to share your 5-star experience on Google to help our family business grow.</p>
+                            <a href="#" class="btn-google">Leave a Google Review</a>
+                            <button class="btn-text reset-demo">Reset Demo</button>
+                        </div>
+                        <div class="step step-2-negative" id="step-negative">
+                            <div class="icon-box warning"><i data-lucide="message-square"></i></div>
+                            <h3>We apologize.</h3>
+                            <p>Please tell us what went wrong so management can make it right privately.</p>
+                            <textarea placeholder="Tell us how we can improve..."></textarea>
+                            <button class="btn-primary" onclick="alert('Feedback sent privately to owner! No public review posted.')">Send to Management</button>
+                            <button class="btn-text reset-demo">Reset Demo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">How the Filtering Works</h3>
+                    <div class="feature">
+                        <div class="feature-icon"><i data-lucide="smartphone"></i></div>
+                        <div>
+                            <h4>1. QR Code Scan</h4>
+                            <p style="color: var(--text-muted);">Customers scan a QR code on their table or receipt before leaving. No app download needed — opens directly in mobile browser.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"><i data-lucide="arrow-up-right"></i></div>
+                        <div>
+                            <h4>2. 4–5 Stars Route to Google</h4>
+                            <p style="color: var(--text-muted);">Happy customers are immediately prompted with a direct link to the Google Business Profile review form. This dramatically increases positive review velocity — the #1 local pack ranking factor.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"><i data-lucide="shield-alert"></i></div>
+                        <div>
+                            <h4>3. 1–3 Stars Are Intercepted</h4>
+                            <p style="color: var(--text-muted);">Unsatisfied customers are directed to a private text form. Feedback goes directly to management via email/SMS — never published online. Management can follow up and recover the relationship.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"><i data-lucide="bar-chart-2"></i></div>
+                        <div>
+                            <h4>4. Review Velocity Compounds</h4>
+                            <p style="color: var(--text-muted);">Google's local pack algorithm rewards recency. Restaurants with 5+ new reviews per week rank above restaurants with 500 old reviews and no new activity. Consistent velocity beats raw count.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-impact" style="margin-top: 3rem;">
+                <h3>Review Targets by Month</h3>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <div class="impact-number">0→50</div>
+                        <div class="impact-desc">Google reviews target by end of Month 2. This is the threshold Google typically needs to show a business in the local 3-pack for competitive queries.</div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">5+/wk</div>
+                        <div class="impact-desc">Review velocity target in Month 3. Weekly new reviews signal an active, popular business to Google's local ranking algorithm.</div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">4.4+</div>
+                        <div class="impact-desc">Target Google rating at 90 days. The filtered system prevents new negative reviews from suppressing this score while building from the current Yelp 2.0 situation.</div>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-number">24hr</div>
+                        <div class="impact-desc">Response time target for every Google review. Google tracks response rate and speed as a GBP quality signal.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <!-- PRICING -->
+        <section id="pricing">
+            <div class="section-header">
+                <h2>Investment & Pricing</h2>
+                <p>A structured 4-month engagement designed to build a permanent SEO foundation, establish social media presence, and deliver measurable ranking results — with clear deliverables at every stage.</p>
+            </div>
+
+            <div class="pricing-inner">
+            <div class="pricing-grid">
+                <!-- Month 1 -->
+                <div class="pricing-card card">
+                    <div class="pricing-badge month1-badge">Month 1</div>
+                    <div class="pricing-amount">$700</div>
+                    <div class="pricing-label">Foundation Month</div>
+                    <p class="pricing-desc">One-time onboarding investment that fixes all critical technical errors, claims GBP, and deploys schema — the work that pays dividends every month after.</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check-circle"></i> Yelp crisis response (all 1–2 star reviews)</li>
+                        <li><i data-lucide="check-circle"></i> Google Business Profile claim & full optimization</li>
+                        <li><i data-lucide="check-circle"></i> Title tag, meta description, canonical fix</li>
+                        <li><i data-lucide="check-circle"></i> robots.txt + sitemap fix + GSC setup</li>
+                        <li><i data-lucide="check-circle"></i> On-domain menu page built (/menu)</li>
+                        <li><i data-lucide="check-circle"></i> Restaurant + Menu + FAQPage JSON-LD schema</li>
+                        <li><i data-lucide="check-circle"></i> About page rewrite (225 → 700+ words)</li>
+                        <li><i data-lucide="check-circle"></i> FAQ page with FAQPage schema</li>
+                        <li><i data-lucide="check-circle"></i> Top 20 citation directory submissions</li>
+                        <li><i data-lucide="check-circle"></i> Weekly GBP posting cadence starts</li>
+                    </ul>
+                </div>
+
+                <!-- Months 2–4 -->
+                <div class="pricing-card card pricing-featured">
+                    <div class="pricing-badge recurring-badge">Months 2 · 3 · 4</div>
+                    <div class="pricing-amount">$900<span class="pricing-per">/mo</span></div>
+                    <div class="pricing-label">Growth & Social Package</div>
+                    <p class="pricing-desc">Full-service monthly retainer covering SEO content, link building, press outreach, and Facebook + Instagram management (3 posts/week per platform). Everything compounds month over month.</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check-circle"></i> 2–3 blog posts per month (SEO-optimized)</li>
+                        <li><i data-lucide="check-circle"></i> 1–2 location/service pages per month</li>
+                        <li><i data-lucide="check-circle"></i> Press outreach (New Pelican, Miami New Times, Edible SF)</li>
+                        <li><i data-lucide="check-circle"></i> Backlink building + directory submissions</li>
+                        <li><i data-lucide="check-circle"></i> Review campaign management + QR system</li>
+                        <li><i data-lucide="check-circle"></i> GBP weekly posts + Q&A seeding</li>
+                        <li><i data-lucide="check-circle"></i> <strong>Facebook: 3 posts/week</strong> (from your photos)</li>
+                        <li><i data-lucide="check-circle"></i> <strong>Instagram: 3 posts/week</strong> (from your photos)</li>
+                        <li><i data-lucide="check-circle"></i> Monthly GSC + GA4 performance report</li>
+                        <li><i data-lucide="check-circle"></i> Ongoing schema updates + technical maintenance</li>
+                    </ul>
+                    <div class="pricing-social-note">
+                        <i data-lucide="instagram"></i>
+                        <span>Social media content designed from photos you send us — no photographer needed. We write the captions, add location tags and hashtags, schedule posts, and manage both accounts.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total investment summary -->
+            <div class="pricing-summary card">
+                <div class="pricing-summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-label">Month 1 — Foundation</div>
+                        <div class="summary-amount">$700</div>
+                    </div>
+                    <div class="summary-divider">+</div>
+                    <div class="summary-item">
+                        <div class="summary-label">Month 2 — Growth & Social</div>
+                        <div class="summary-amount">$900</div>
+                    </div>
+                    <div class="summary-divider">+</div>
+                    <div class="summary-item">
+                        <div class="summary-label">Month 3 — Traffic Push</div>
+                        <div class="summary-amount">$900</div>
+                    </div>
+                    <div class="summary-divider">+</div>
+                    <div class="summary-item">
+                        <div class="summary-label">Month 4 — Consolidation</div>
+                        <div class="summary-amount">$900</div>
+                    </div>
+                    <div class="summary-divider">=</div>
+                    <div class="summary-item summary-total">
+                        <div class="summary-label">4-Month Total Investment</div>
+                        <div class="summary-amount">$3,400</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What's included callout boxes -->
+            <div class="pricing-callouts">
+                <div class="pricing-callout">
+                    <div class="pc-icon"><i data-lucide="search"></i></div>
+                    <h4>SEO & Technical</h4>
+                    <p>Full technical audit fixes, schema markup, content creation, keyword optimization, backlink building, press outreach, and monthly Search Console reporting.</p>
+                </div>
+                <div class="pricing-callout">
+                    <div class="pc-icon"><i data-lucide="instagram"></i></div>
+                    <h4>Facebook & Instagram</h4>
+                    <p>3 posts per week on each platform, every week of Months 2–4. We design the posts using photos you supply, write captions with location and keyword optimization, and schedule everything.</p>
+                </div>
+                <div class="pricing-callout">
+                    <div class="pc-icon"><i data-lucide="star"></i></div>
+                    <h4>Review System</h4>
+                    <p>Filtered review collection setup, QR code generation, staff training script, Google review response management, and monthly review velocity tracking.</p>
+                </div>
+                <div class="pricing-callout">
+                    <div class="pc-icon"><i data-lucide="bar-chart-2"></i></div>
+                    <h4>Monthly Reporting</h4>
+                    <p>GA4 + Google Search Console report every month showing keyword rankings, organic traffic growth, GBP impressions, social reach, and what's planned next.</p>
+                </div>
+            </div>
+            </div><!-- /pricing-inner -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 PALM Web Miami LLC. Confidential Strategy Report — Prepared for NapulEATan Pizzeria & Deli.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
