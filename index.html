@@ -5,8 +5,396 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEO Strategy & Audit | NapulEATan Pizzeria & Deli</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+:root {
+    --bg-color: #ffffff;
+    --bg-secondary: #f9fafb;
+    --border-color: #e5e7eb;
+    --text-main: #111827;
+    --text-muted: #4b5563;
+    --primary: #2563eb;
+    --critical: #dc2626;
+    --warning: #d97706;
+    --success: #16a34a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.025em;
+}
+
+code {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.875em;
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    color: var(--critical);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 1rem;
+}
+.logo { font-weight: 700; font-size: 1.1rem; color: var(--text-main); white-space: nowrap; }
+.logo span { font-weight: 400; color: var(--text-muted); }
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.15s; white-space: nowrap; }
+.nav-links a:hover { color: var(--primary); }
+.nav-links a.nav-pricing { color: var(--primary); font-weight: 600; }
+.client-name {
+    font-weight: 500; color: var(--text-muted); background: var(--bg-secondary);
+    padding: 0.4rem 0.85rem; border-radius: 6px; font-size: 0.875rem;
+    border: 1px solid var(--border-color); white-space: nowrap;
+}
+
+/* Layout */
+main { max-width: 1060px; margin: 0 auto; padding: 0 5%; }
+section { padding: 5rem 0; border-bottom: 1px solid var(--border-color); }
+section:last-of-type { border-bottom: none; }
+.section-header { margin-bottom: 3rem; }
+.section-header h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+.section-header p { color: var(--text-muted); font-size: 1.05rem; max-width: 820px; }
+.subsection-title { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.4rem; }
+.subsection-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0; }
+
+/* Hero */
+.hero { padding: 7rem 0 5rem; }
+.badge {
+    display: inline-block; padding: 0.25rem 0.85rem; border-radius: 9999px;
+    background: #eff6ff; color: var(--primary); font-weight: 600; font-size: 0.8rem;
+    margin-bottom: 1.5rem; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.hero h1 { font-size: 3.25rem; line-height: 1.1; margin-bottom: 1.25rem; }
+.hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 680px; margin-bottom: 3rem; }
+.hero-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    border-top: 1px solid var(--border-color); padding-top: 3rem;
+}
+.hero-stat { display: flex; flex-direction: column; gap: 0.3rem; }
+.stat-number { font-size: 2.5rem; font-weight: 700; color: var(--primary); line-height: 1; }
+.stat-label { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+
+/* Cards */
+.card {
+    background: #ffffff; border: 1px solid var(--border-color);
+    border-radius: 12px; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.card h3 { font-size: 1.2rem; margin-bottom: 1rem; }
+
+/* Audit */
+.score-card { display: flex; align-items: center; gap: 3rem; margin-bottom: 2.5rem; background: var(--bg-secondary); }
+.score-circle { position: relative; width: 120px; height: 120px; flex-shrink: 0; }
+.circular-chart { display: block; width: 100%; height: 100%; }
+.circle-bg { fill: none; stroke: var(--border-color); stroke-width: 4; }
+.circle { fill: none; stroke-width: 4; stroke-linecap: round; stroke: var(--warning); animation: progress 2s ease-out forwards; }
+@keyframes progress { 0% { stroke-dasharray: 0 100; } }
+.score-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+.score-text .value { font-size: 2rem; font-weight: 700; color: var(--text-main); display: block; line-height: 1; }
+.score-text .total { font-size: 0.85rem; color: var(--text-muted); }
+.score-details h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.score-badges { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+.score-badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+.score-badge.critical { background: #fee2e2; color: var(--critical); }
+.score-badge.warning  { background: #fef3c7; color: var(--warning); }
+.score-badge.info     { background: #eff6ff; color: var(--primary); }
+.issues-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.issue-card.critical h3 { color: var(--critical); }
+.issue-card.warning h3  { color: var(--warning); }
+.issue-card ul { list-style: none; margin-top: 1rem; }
+.issue-card li { padding: 0.85rem 0; border-bottom: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 0.25rem; }
+.issue-card li:last-child { border-bottom: none; }
+.issue-card li strong { color: var(--text-main); font-size: 0.95rem; }
+.issue-card li span { color: var(--text-muted); font-size: 0.875rem; line-height: 1.5; }
+.metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.metric-card {
+    background: var(--bg-secondary); border: 1px solid var(--border-color);
+    border-radius: 10px; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem;
+}
+.metric-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; }
+.metric-icon i { width: 18px; height: 18px; }
+.metric-value { font-size: 1.75rem; font-weight: 700; color: var(--text-main); line-height: 1; }
+.metric-label { font-size: 0.875rem; font-weight: 600; color: var(--text-main); }
+.metric-note { font-size: 0.8rem; color: var(--text-muted); }
+
+/* Competitors */
+.opportunity-banner {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 1.5rem; display: flex; gap: 1.25rem; align-items: flex-start; margin-bottom: 3rem;
+}
+.opportunity-icon { width: 40px; height: 40px; background: #fed7aa; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #c2410c; flex-shrink: 0; }
+.opportunity-icon i { width: 20px; height: 20px; }
+.opportunity-banner strong { display: block; font-size: 1rem; color: #9a3412; margin-bottom: 0.4rem; }
+.opportunity-banner p { font-size: 0.9rem; color: #7c2d12; line-height: 1.6; }
+.competitor-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+.competitor-card { padding: 1.5rem; }
+.comp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; gap: 1rem; }
+.comp-name { display: flex; flex-direction: column; gap: 0.2rem; }
+.comp-name strong { font-size: 1.05rem; }
+.comp-url { font-size: 0.8rem; color: var(--primary); font-family: 'SF Mono', monospace; }
+.threat-badge { font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.65rem; border-radius: 9999px; white-space: nowrap; }
+.threat-badge.high   { background: #fee2e2; color: var(--critical); }
+.threat-badge.medium { background: #fef3c7; color: var(--warning); }
+.threat-badge.low    { background: #dcfce7; color: var(--success); }
+.comp-address { display: flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+.comp-address i { width: 14px; height: 14px; }
+.comp-summary { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
+.comp-stats { display: flex; gap: 1rem; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 0.85rem 0; margin-bottom: 1rem; }
+.comp-stat { display: flex; flex-direction: column; gap: 0.15rem; flex: 1; text-align: center; }
+.comp-stat .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600; }
+.comp-stat .value { font-size: 0.85rem; font-weight: 700; }
+.comp-stat .value.bad  { color: var(--critical); }
+.comp-stat .value.warn { color: var(--warning); }
+.comp-stat .value.good { color: var(--success); }
+.comp-verdict { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.875rem; color: var(--success); }
+.comp-verdict i { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+.comp-verdict span { color: var(--text-muted); }
+.comp-verdict strong { color: var(--success); }
+.insight-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 1.5rem; display: flex; gap: 1.25rem; align-items: flex-start; }
+.insight-icon { width: 40px; height: 40px; background: #bfdbfe; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0; }
+.insight-icon i { width: 20px; height: 20px; }
+.insight-box strong { display: block; font-size: 1rem; color: #1e40af; margin-bottom: 0.4rem; }
+.insight-box p { font-size: 0.9rem; color: #1d4ed8; line-height: 1.6; }
+.gap-table td, .gap-table th { padding: 0.75rem 0.85rem; font-size: 0.875rem; }
+.gap-table td.check { color: var(--success); font-size: 1rem; text-align: center; }
+.gap-table td.cross { color: var(--border-color); font-size: 1rem; text-align: center; }
+.gap-critical { background: #fee2e2; color: var(--critical); font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; white-space: nowrap; }
+.gap-high     { background: #fef3c7; color: var(--warning); font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; }
+.gap-medium   { background: #eff6ff; color: var(--primary); font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; }
+.gap-oppty    { background: #dcfce7; color: var(--success); font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; }
+.depth-badge, .schema-badge { font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 4px; }
+.depth-badge.good   { background: #dcfce7; color: var(--success); }
+.depth-badge.medium { background: #fef3c7; color: var(--warning); }
+.depth-badge.bad    { background: #fee2e2; color: var(--critical); }
+.schema-badge.none  { background: #fee2e2; color: var(--critical); }
+.schema-badge.has   { background: #dcfce7; color: var(--success); }
+
+/* Ordering */
+.ordering-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+.ordering-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.4rem 0.85rem; border-radius: 6px; margin-bottom: 1.5rem; display: inline-block; }
+.bad-label  { background: #fee2e2; color: var(--critical); }
+.good-label { background: #dcfce7; color: var(--success); }
+.bad-side  { border-color: #fecaca; }
+.good-side { border-color: #bbf7d0; }
+.ordering-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+.ordering-bad, .ordering-good { display: flex; gap: 0.85rem; align-items: flex-start; }
+.ordering-bad i  { color: var(--critical); width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
+.ordering-good i { color: var(--success);  width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
+.ordering-bad strong, .ordering-good strong { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; }
+.ordering-bad p, .ordering-good p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+.ordering-impact { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; }
+.ordering-impact h3 { font-size: 1.2rem; margin-bottom: 1.5rem; }
+
+/* Impact grid */
+.impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.impact-item { text-align: center; }
+.impact-number { font-size: 2rem; font-weight: 700; color: var(--primary); line-height: 1; margin-bottom: 0.5rem; }
+.impact-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; background: #ffffff; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; }
+.data-table th, .data-table td { padding: 0.9rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+.data-table th { background: var(--bg-secondary); font-weight: 600; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.data-table tr:last-child td { border-bottom: none; }
+.pos-badge { font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 4px; }
+.pos-badge.bad  { background: #fee2e2; color: var(--critical); }
+.pos-badge.warn { background: #fef3c7; color: var(--warning); }
+.pos-badge.med  { background: #eff6ff; color: var(--primary); }
+.pos-badge.good { background: #dcfce7; color: var(--success); }
+
+/* Lists */
+.task-list { list-style: none; }
+.task-list li { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.85rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+.task-list li i { color: var(--primary); flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
+.task-list strong { color: var(--text-main); }
+
+/* Keyword bars */
+.keyword-projection { margin-top: 2rem; }
+.projection-bars { display: flex; flex-direction: column; gap: 0.85rem; }
+.proj-bar-row { display: flex; align-items: center; gap: 1rem; }
+.proj-label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); width: 110px; flex-shrink: 0; }
+.proj-bar-wrap { flex: 1; background: var(--bg-secondary); border-radius: 6px; height: 36px; overflow: hidden; }
+.proj-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding: 0 0.85rem; min-width: 80px; transition: width 1s ease-out; }
+.proj-bar span { color: white; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 2.5rem; border-left: 2px solid var(--border-color); display: flex; flex-direction: column; gap: 3rem; }
+.timeline-item { position: relative; }
+.timeline-marker { position: absolute; left: -3.5rem; top: 1.5rem; width: 2.25rem; height: 2.25rem; background: #ffffff; border: 2px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; color: var(--primary); }
+.timeline-content.card { padding: 2rem 2rem 1.5rem; }
+.month-header { margin-bottom: 1.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border-color); }
+.month-header h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.month-goal { font-size: 0.875rem; color: var(--primary); font-weight: 500; background: #eff6ff; border-radius: 6px; padding: 0.5rem 0.85rem; display: inline-block; }
+.week-block { margin-bottom: 1.75rem; padding-bottom: 1.75rem; border-bottom: 1px dashed var(--border-color); }
+.week-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.week-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 1rem; padding: 0.3rem 0.65rem; background: var(--bg-secondary); border-radius: 5px; display: inline-block; }
+.month3-callout { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 1.5rem; display: flex; gap: 1.25rem; align-items: flex-start; margin-top: 2rem; }
+.m3-icon { width: 40px; height: 40px; background: #bbf7d0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--success); flex-shrink: 0; }
+.m3-icon i { width: 20px; height: 20px; }
+.month3-callout strong { display: block; color: #14532d; margin-bottom: 0.4rem; }
+.month3-callout p { font-size: 0.875rem; color: #166534; line-height: 1.65; }
+
+/* Review demo */
+.demo-container { display: grid; grid-template-columns: 300px 1fr; gap: 3rem; align-items: center; }
+.demo-phone { background: #ffffff; border: 1px solid var(--border-color); border-radius: 24px; overflow: hidden; height: 560px; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+.phone-header { background: var(--bg-secondary); padding: 1.25rem 1rem 1rem; text-align: center; border-bottom: 1px solid var(--border-color); }
+.phone-header h4 { font-size: 1rem; font-weight: 600; }
+.phone-body { padding: 2rem; position: relative; height: calc(100% - 60px); display: flex; flex-direction: column; justify-content: center; text-align: center; }
+.step { position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; background: #ffffff; }
+.step.active { opacity: 1; pointer-events: all; }
+.step h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.step p { color: var(--text-muted); font-size: 0.875rem; margin-bottom: 2rem; }
+.stars { display: flex; gap: 0.25rem; justify-content: center; direction: rtl; }
+.stars i { width: 32px; height: 32px; color: var(--border-color); cursor: pointer; transition: color 0.2s; direction: ltr; }
+.stars i.filled, .stars i:hover, .stars i:hover ~ i { color: var(--warning); fill: var(--warning); }
+.btn-primary { display: inline-block; background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 500; border: none; cursor: pointer; width: 100%; font-size: 0.9rem; font-family: inherit; }
+.btn-primary:hover { background: #1d4ed8; }
+.btn-google { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: #ffffff; color: var(--text-main); border: 1px solid var(--border-color); padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 500; width: 100%; font-size: 0.9rem; }
+.btn-google:hover { background: var(--bg-secondary); }
+.btn-text { background: none; border: none; color: var(--text-muted); margin-top: 0.75rem; cursor: pointer; font-size: 0.8rem; font-family: inherit; }
+.btn-text:hover { color: var(--text-main); text-decoration: underline; }
+textarea { width: 100%; border: 1px solid var(--border-color); border-radius: 6px; padding: 0.75rem; margin-bottom: 1rem; font-family: inherit; resize: none; height: 90px; font-size: 0.875rem; }
+textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+.icon-box { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+.icon-box.success { background: #dcfce7; color: var(--success); }
+.icon-box.warning { background: #fef3c7; color: var(--warning); }
+.feature { display: flex; gap: 1.25rem; margin-bottom: 1.75rem; align-items: flex-start; }
+.feature-icon { width: 44px; height: 44px; border-radius: 8px; background: var(--bg-secondary); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0; }
+.feature-icon i { width: 20px; height: 20px; }
+.feature h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+.review-impact { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; }
+.review-impact h3 { font-size: 1.2rem; margin-bottom: 1.5rem; }
+
+/* Pricing */
+.pricing-inner { max-width: 820px; margin: 0 auto; }
+.pricing-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 1.5rem; margin-bottom: 2rem; align-items: start; }
+.pricing-card { display: flex; flex-direction: column; gap: 1rem; padding: 2rem; position: relative; }
+.pricing-featured { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary), 0 4px 16px rgba(37,99,235,0.1); }
+.pricing-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 0.3rem 0.75rem; border-radius: 9999px; width: fit-content; }
+.month1-badge    { background: #f3f4f6; color: var(--text-muted); }
+.recurring-badge { background: #eff6ff; color: var(--primary); }
+.pricing-amount { font-size: 3rem; font-weight: 700; color: var(--text-main); line-height: 1; }
+.pricing-amount .pricing-per { font-size: 1.25rem; font-weight: 500; color: var(--text-muted); }
+.pricing-label { font-size: 1rem; font-weight: 600; color: var(--text-main); }
+.pricing-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; border-top: 1px solid var(--border-color); padding-top: 1rem; }
+.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.pricing-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.875rem; color: var(--text-muted); line-height: 1.4; }
+.pricing-features li i { width: 16px; height: 16px; color: var(--success); flex-shrink: 0; margin-top: 1px; }
+.pricing-features li strong { color: var(--text-main); }
+.pricing-social-note { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 0.85rem 1rem; display: flex; gap: 0.65rem; align-items: flex-start; margin-top: 0.5rem; font-size: 0.8rem; color: #1e40af; line-height: 1.55; }
+.pricing-social-note i { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; color: var(--primary); }
+.pricing-summary { background: var(--bg-secondary); margin-bottom: 2rem; border-radius: 10px; padding: 1.5rem 2rem; border: 1px solid var(--border-color); }
+.pricing-summary-grid { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1.15fr; align-items: center; gap: 0.75rem; }
+.summary-item { display: flex; flex-direction: column; gap: 0.2rem; }
+.summary-total { background: var(--primary); border-radius: 8px; padding: 0.6rem 0.85rem; color: white; }
+.summary-total .summary-label  { color: rgba(255,255,255,0.75); }
+.summary-total .summary-amount { color: white; }
+.summary-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; white-space: nowrap; }
+.summary-amount { font-size: 1.15rem; font-weight: 700; color: var(--text-main); }
+.summary-divider { font-size: 1.25rem; font-weight: 300; color: var(--border-color); text-align: center; }
+.pricing-callouts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.pricing-callout { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.pc-icon { width: 34px; height: 34px; background: #eff6ff; border-radius: 7px; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+.pc-icon i { width: 17px; height: 17px; }
+.pricing-callout h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-main); }
+.pricing-callout p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+/* Footer */
+footer { text-align: center; padding: 3rem 0; color: var(--text-muted); font-size: 0.875rem; border-top: 1px solid var(--border-color); }
+
+/* Responsive — Tablet */
+@media (max-width: 900px) {
+    .nav-links        { display: none; }
+    .hero             { padding: 4rem 0 3rem; }
+    .hero h1          { font-size: 2.5rem; }
+    .hero-stats       { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .score-card       { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+    .issues-grid      { grid-template-columns: 1fr; }
+    .metrics-grid     { grid-template-columns: repeat(2, 1fr); }
+    .competitor-cards { grid-template-columns: 1fr; }
+    .ordering-comparison { grid-template-columns: 1fr; }
+    .impact-grid      { grid-template-columns: repeat(2, 1fr); }
+    .proj-label       { width: 80px; font-size: 0.8rem; }
+    .demo-container   { grid-template-columns: 1fr; }
+    .demo-phone       { max-width: 300px; margin: 0 auto; }
+    .pricing-inner    { max-width: 100%; }
+    .pricing-grid     { grid-template-columns: 1fr; }
+    .pricing-summary-grid { grid-template-columns: 1fr 1fr 1fr; row-gap: 0.5rem; }
+    .summary-divider  { display: none; }
+    .pricing-callouts { grid-template-columns: repeat(2, 1fr); }
+    .card             { overflow-x: auto; }
+}
+
+/* Responsive — Mobile */
+@media (max-width: 600px) {
+    main              { padding: 0 4%; }
+    section           { padding: 3.5rem 0; }
+    .navbar           { padding: 0.85rem 4%; }
+    .client-name      { display: none; }
+    .hero             { padding: 3rem 0 2.5rem; }
+    .hero h1          { font-size: 1.9rem; line-height: 1.15; }
+    .hero p           { font-size: 1rem; }
+    .hero-stats       { grid-template-columns: 1fr 1fr; gap: 1rem; padding-top: 2rem; }
+    .stat-number      { font-size: 2rem; }
+    .section-header h2 { font-size: 1.6rem; }
+    .section-header p  { font-size: 0.95rem; }
+    .score-card       { padding: 1.25rem; }
+    .score-circle     { width: 90px; height: 90px; }
+    .score-text .value { font-size: 1.5rem; }
+    .metrics-grid     { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .metric-card      { padding: 1rem; }
+    .metric-value     { font-size: 1.4rem; }
+    .gap-table        { font-size: 0.75rem; }
+    .gap-table td,
+    .gap-table th     { padding: 0.5rem 0.5rem; }
+    .impact-grid      { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .impact-number    { font-size: 1.5rem; }
+    .ordering-side    { padding: 1.25rem; }
+    .timeline         { padding-left: 1.25rem; }
+    .timeline-marker  { left: -2.5rem; width: 1.85rem; height: 1.85rem; font-size: 0.65rem; }
+    .timeline-content.card { padding: 1.25rem; }
+    .week-label       { font-size: 0.72rem; }
+    .task-list li     { font-size: 0.875rem; }
+    .demo-phone       { height: 480px; }
+    .card             { padding: 1.25rem; border-radius: 10px; }
+    .pricing-card     { padding: 1.25rem; }
+    .pricing-amount   { font-size: 2.25rem; }
+    .pricing-summary  { padding: 1.25rem; }
+    .pricing-summary-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .summary-total    { grid-column: 1 / -1; }
+    .summary-amount   { font-size: 1rem; }
+    .pricing-callouts { grid-template-columns: 1fr; }
+    .data-table       { font-size: 0.8rem; }
+    .data-table th,
+    .data-table td    { padding: 0.65rem 0.65rem; }
+    .proj-bar-row     { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+    .proj-label       { width: auto; }
+    .proj-bar-wrap    { width: 100%; }
+}
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -119,7 +507,6 @@
                 </div>
             </div>
 
-            <!-- Metrics grid -->
             <div class="metrics-grid" style="margin-top: 2.5rem;">
                 <div class="metric-card">
                     <div class="metric-icon" style="background:#fee2e2; color: var(--critical)"><i data-lucide="file-x"></i></div>
@@ -167,7 +554,6 @@
                 <p>Direct research on every active competitor in the Fort Lauderdale pizza and Italian restaurant market — including the two on your exact corridor. Every data point here was pulled from live websites.</p>
             </div>
 
-            <!-- Big opportunity callout -->
             <div class="opportunity-banner">
                 <div class="opportunity-icon"><i data-lucide="alert-triangle"></i></div>
                 <div>
@@ -176,7 +562,6 @@
                 </div>
             </div>
 
-            <!-- Corridor competitors -->
             <h3 class="subsection-title">Your Corridor: Commercial Blvd (33308)</h3>
             <p class="subsection-desc">These two restaurants compete with you on the same street for "italian restaurant near me" and "pizza near commercial blvd" searches.</p>
 
@@ -226,7 +611,6 @@
                 </div>
             </div>
 
-            <!-- Broader market competitors -->
             <h3 class="subsection-title" style="margin-top: 3rem;">Broader Fort Lauderdale Market</h3>
             <p class="subsection-desc">These competitors rank citywide for "pizza fort lauderdale" and "neapolitan pizza fort lauderdale." They are not on your corridor but capture searches across the city.</p>
 
@@ -274,7 +658,6 @@
                 </table>
             </div>
 
-            <!-- Schema vacuum callout -->
             <div class="insight-box" style="margin-top: 2rem;">
                 <div class="insight-icon"><i data-lucide="zap"></i></div>
                 <div>
@@ -283,7 +666,6 @@
                 </div>
             </div>
 
-            <!-- Feature gap matrix -->
             <h3 class="subsection-title" style="margin-top: 3rem;">Content Gap Matrix</h3>
             <p class="subsection-desc">What every competitor has that NapulEATan doesn't. Sorted by number of competitors who have it.</p>
 
@@ -391,96 +773,24 @@
                 <div class="ordering-side bad-side card">
                     <div class="ordering-label bad-label">Current Setup — YourMenu (Third Party)</div>
                     <ul class="ordering-list">
-                        <li class="ordering-bad">
-                            <i data-lucide="x-circle"></i>
-                            <div>
-                                <strong>Google sees nothing</strong>
-                                <p>Dish names, ingredients, Italian terms, and prices all live on yourmenu.com — not on napuleatan.com. Google indexes the third-party domain, not yours. Zero SEO benefit from your menu content.</p>
-                            </div>
-                        </li>
-                        <li class="ordering-bad">
-                            <i data-lucide="x-circle"></i>
-                            <div>
-                                <strong>Keyword surface area = 0</strong>
-                                <p>"Margherita with San Marzano tomatoes," "wood-fired buffalo mozzarella" — all of that rich content is invisible to Google searches. You're paying with your own differentiation for someone else's domain.</p>
-                            </div>
-                        </li>
-                        <li class="ordering-bad">
-                            <i data-lucide="x-circle"></i>
-                            <div>
-                                <strong>Customers leave your site</strong>
-                                <p>Every click to YourMenu is a user leaving napuleatan.com. Google measures dwell time and bounce rate. Sending users off-domain on arrival signals low engagement — a negative ranking factor.</p>
-                            </div>
-                        </li>
-                        <li class="ordering-bad">
-                            <i data-lucide="x-circle"></i>
-                            <div>
-                                <strong>Monthly fees with no equity</strong>
-                                <p>You pay for the platform every month and build zero brand authority in return. When you stop paying, the ordering page is gone. Nothing accumulated.</p>
-                            </div>
-                        </li>
-                        <li class="ordering-bad">
-                            <i data-lucide="x-circle"></i>
-                            <div>
-                                <strong>No customer data ownership</strong>
-                                <p>Email addresses, order history, and repeat customer behavior lives in YourMenu's database — not yours. You cannot run email campaigns, loyalty programs, or personalized offers to your own customers.</p>
-                            </div>
-                        </li>
-                        <li class="ordering-bad">
-                            <i data-lucide="x-circle"></i>
-                            <div>
-                                <strong>Branding is theirs, not yours</strong>
-                                <p>Customers ordering on yourmenu.com see YourMenu's interface, not your brand. Brand recall suffers — customers remember the ordering platform, not the restaurant.</p>
-                            </div>
-                        </li>
+                        <li class="ordering-bad"><i data-lucide="x-circle"></i><div><strong>Google sees nothing</strong><p>Dish names, ingredients, Italian terms, and prices all live on yourmenu.com — not on napuleatan.com. Google indexes the third-party domain, not yours. Zero SEO benefit from your menu content.</p></div></li>
+                        <li class="ordering-bad"><i data-lucide="x-circle"></i><div><strong>Keyword surface area = 0</strong><p>"Margherita with San Marzano tomatoes," "wood-fired buffalo mozzarella" — all of that rich content is invisible to Google searches. You're paying with your own differentiation for someone else's domain.</p></div></li>
+                        <li class="ordering-bad"><i data-lucide="x-circle"></i><div><strong>Customers leave your site</strong><p>Every click to YourMenu is a user leaving napuleatan.com. Google measures dwell time and bounce rate. Sending users off-domain on arrival signals low engagement — a negative ranking factor.</p></div></li>
+                        <li class="ordering-bad"><i data-lucide="x-circle"></i><div><strong>Monthly fees with no equity</strong><p>You pay for the platform every month and build zero brand authority in return. When you stop paying, the ordering page is gone. Nothing accumulated.</p></div></li>
+                        <li class="ordering-bad"><i data-lucide="x-circle"></i><div><strong>No customer data ownership</strong><p>Email addresses, order history, and repeat customer behavior lives in YourMenu's database — not yours. You cannot run email campaigns, loyalty programs, or personalized offers to your own customers.</p></div></li>
+                        <li class="ordering-bad"><i data-lucide="x-circle"></i><div><strong>Branding is theirs, not yours</strong><p>Customers ordering on yourmenu.com see YourMenu's interface, not your brand. Brand recall suffers — customers remember the ordering platform, not the restaurant.</p></div></li>
                     </ul>
                 </div>
 
                 <div class="ordering-side good-side card">
                     <div class="ordering-label good-label">Recommended — On-Domain Ordering</div>
                     <ul class="ordering-list">
-                        <li class="ordering-good">
-                            <i data-lucide="check-circle"></i>
-                            <div>
-                                <strong>Every menu item becomes a keyword</strong>
-                                <p>When your menu lives at <code>napuleatan.com/menu</code>, Google crawls every dish name, ingredient, and description. "Fresh buffalo mozzarella fort lauderdale," "San Marzano pizza," "wood-fired neapolitan" — all indexed, all searchable.</p>
-                            </div>
-                        </li>
-                        <li class="ordering-good">
-                            <i data-lucide="check-circle"></i>
-                            <div>
-                                <strong>Menu schema unlocks rich snippets</strong>
-                                <p>An on-domain menu allows you to add Menu + MenuItem JSON-LD schema. Google can display your dishes, prices, and descriptions directly in search results — before a customer even clicks your site.</p>
-                            </div>
-                        </li>
-                        <li class="ordering-good">
-                            <i data-lucide="check-circle"></i>
-                            <div>
-                                <strong>Users stay on your domain</strong>
-                                <p>Longer sessions, lower bounce rate, more internal page views — all positive engagement signals that Google uses to validate local ranking decisions.</p>
-                            </div>
-                        </li>
-                        <li class="ordering-good">
-                            <i data-lucide="check-circle"></i>
-                            <div>
-                                <strong>You own all customer data</strong>
-                                <p>Email addresses, order frequency, average order value, favorite dishes — all in your database. Build a loyalty program, run birthday promotions, reactivate lapsed customers. That data is an asset that compounds.</p>
-                            </div>
-                        </li>
-                        <li class="ordering-good">
-                            <i data-lucide="check-circle"></i>
-                            <div>
-                                <strong>One-time build, permanent equity</strong>
-                                <p>An on-domain ordering page built once keeps working indefinitely. No monthly platform fees. The SEO benefit accumulates every month — it doesn't reset when you stop paying.</p>
-                            </div>
-                        </li>
-                        <li class="ordering-good">
-                            <i data-lucide="check-circle"></i>
-                            <div>
-                                <strong>Full brand experience</strong>
-                                <p>Customers order inside your branded interface — your colors, your photos, your story. Brand recall increases. Repeat orders go to <em>your</em> site, not a platform that also lists your competitors.</p>
-                            </div>
-                        </li>
+                        <li class="ordering-good"><i data-lucide="check-circle"></i><div><strong>Every menu item becomes a keyword</strong><p>When your menu lives at <code>napuleatan.com/menu</code>, Google crawls every dish name, ingredient, and description. "Fresh buffalo mozzarella fort lauderdale," "San Marzano pizza," "wood-fired neapolitan" — all indexed, all searchable.</p></div></li>
+                        <li class="ordering-good"><i data-lucide="check-circle"></i><div><strong>Menu schema unlocks rich snippets</strong><p>An on-domain menu allows you to add Menu + MenuItem JSON-LD schema. Google can display your dishes, prices, and descriptions directly in search results — before a customer even clicks your site.</p></div></li>
+                        <li class="ordering-good"><i data-lucide="check-circle"></i><div><strong>Users stay on your domain</strong><p>Longer sessions, lower bounce rate, more internal page views — all positive engagement signals that Google uses to validate local ranking decisions.</p></div></li>
+                        <li class="ordering-good"><i data-lucide="check-circle"></i><div><strong>You own all customer data</strong><p>Email addresses, order frequency, average order value, favorite dishes — all in your database. Build a loyalty program, run birthday promotions, reactivate lapsed customers. That data is an asset that compounds.</p></div></li>
+                        <li class="ordering-good"><i data-lucide="check-circle"></i><div><strong>One-time build, permanent equity</strong><p>An on-domain ordering page built once keeps working indefinitely. No monthly platform fees. The SEO benefit accumulates every month — it doesn't reset when you stop paying.</p></div></li>
+                        <li class="ordering-good"><i data-lucide="check-circle"></i><div><strong>Full brand experience</strong><p>Customers order inside your branded interface — your colors, your photos, your story. Brand recall increases. Repeat orders go to <em>your</em> site, not a platform that also lists your competitors.</p></div></li>
                     </ul>
                 </div>
             </div>
@@ -488,22 +798,10 @@
             <div class="ordering-impact">
                 <h3>The SEO Impact in Numbers</h3>
                 <div class="impact-grid">
-                    <div class="impact-item">
-                        <div class="impact-number">~1,200</div>
-                        <div class="impact-desc">Additional indexable words from a full on-domain menu — versus zero currently</div>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-number">40+</div>
-                        <div class="impact-desc">New long-tail keyword opportunities embedded in dish names and ingredient descriptions</div>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-number">30–50%</div>
-                        <div class="impact-desc">Typical bounce rate reduction when ordering stays on-domain vs. redirecting out</div>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-number">100%</div>
-                        <div class="impact-desc">Customer email data ownership — currently 0% with YourMenu</div>
-                    </div>
+                    <div class="impact-item"><div class="impact-number">~1,200</div><div class="impact-desc">Additional indexable words from a full on-domain menu — versus zero currently</div></div>
+                    <div class="impact-item"><div class="impact-number">40+</div><div class="impact-desc">New long-tail keyword opportunities embedded in dish names and ingredient descriptions</div></div>
+                    <div class="impact-item"><div class="impact-number">30–50%</div><div class="impact-desc">Typical bounce rate reduction when ordering stays on-domain vs. redirecting out</div></div>
+                    <div class="impact-item"><div class="impact-number">100%</div><div class="impact-desc">Customer email data ownership — currently 0% with YourMenu</div></div>
                 </div>
             </div>
         </section>
@@ -530,43 +828,13 @@
                 <h3 style="margin-top: 2rem;">Keyword Tiers Overview</h3>
                 <table class="data-table">
                     <thead>
-                        <tr>
-                            <th>Tier</th>
-                            <th>Type</th>
-                            <th>Examples</th>
-                            <th>When Ranking</th>
-                            <th>Count</th>
-                        </tr>
+                        <tr><th>Tier</th><th>Type</th><th>Examples</th><th>When Ranking</th><th>Count</th></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Tier 1 — Primary</strong></td>
-                            <td>Broad, high-intent city searches</td>
-                            <td>"pizza fort lauderdale," "italian restaurant fort lauderdale"</td>
-                            <td>Month 2–3</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tier 2 — Niche</strong></td>
-                            <td>Specific style + city</td>
-                            <td>"neapolitan pizza fort lauderdale," "wood fired pizza fort lauderdale"</td>
-                            <td>Month 1–2</td>
-                            <td>18</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tier 3 — Location</strong></td>
-                            <td>Neighborhood modifiers</td>
-                            <td>"pizza near wilton manors," "italian food oakland park"</td>
-                            <td>Month 1–2</td>
-                            <td>35</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tier 4 — Long-Tail</strong></td>
-                            <td>Specific dishes, occasions, questions</td>
-                            <td>"daily fresh pizza dough," "birthday dinner italian fort lauderdale," "best tiramisu ft lauderdale"</td>
-                            <td>Month 2–3</td>
-                            <td>32</td>
-                        </tr>
+                        <tr><td><strong>Tier 1 — Primary</strong></td><td>Broad, high-intent city searches</td><td>"pizza fort lauderdale," "italian restaurant fort lauderdale"</td><td>Month 2–3</td><td>12</td></tr>
+                        <tr><td><strong>Tier 2 — Niche</strong></td><td>Specific style + city</td><td>"neapolitan pizza fort lauderdale," "wood fired pizza fort lauderdale"</td><td>Month 1–2</td><td>18</td></tr>
+                        <tr><td><strong>Tier 3 — Location</strong></td><td>Neighborhood modifiers</td><td>"pizza near wilton manors," "italian food oakland park"</td><td>Month 1–2</td><td>35</td></tr>
+                        <tr><td><strong>Tier 4 — Long-Tail</strong></td><td>Specific dishes, occasions, questions</td><td>"daily fresh pizza dough," "birthday dinner italian fort lauderdale," "best tiramisu ft lauderdale"</td><td>Month 2–3</td><td>32</td></tr>
                     </tbody>
                 </table>
 
@@ -574,38 +842,10 @@
                     <h3>Traffic Projection by Month</h3>
                     <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">Based on claimed GBP, on-domain menu, schema implementation, and content expansion executing on schedule.</p>
                     <div class="projection-bars">
-                        <div class="proj-bar-row">
-                            <span class="proj-label">Baseline (Now)</span>
-                            <div class="proj-bar-wrap">
-                                <div class="proj-bar" style="width: 4%; background: var(--critical);">
-                                    <span>~50 visits/mo</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="proj-bar-row">
-                            <span class="proj-label">Month 1</span>
-                            <div class="proj-bar-wrap">
-                                <div class="proj-bar" style="width: 15%; background: var(--warning);">
-                                    <span>200–400</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="proj-bar-row">
-                            <span class="proj-label">Month 2</span>
-                            <div class="proj-bar-wrap">
-                                <div class="proj-bar" style="width: 38%; background: #2563eb;">
-                                    <span>800–1,500</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="proj-bar-row">
-                            <span class="proj-label">Month 3</span>
-                            <div class="proj-bar-wrap">
-                                <div class="proj-bar" style="width: 85%; background: var(--success);">
-                                    <span>3,000–6,000+</span>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="proj-bar-row"><span class="proj-label">Baseline (Now)</span><div class="proj-bar-wrap"><div class="proj-bar" style="width: 4%; background: var(--critical);"><span>~50 visits/mo</span></div></div></div>
+                        <div class="proj-bar-row"><span class="proj-label">Month 1</span><div class="proj-bar-wrap"><div class="proj-bar" style="width: 15%; background: var(--warning);"><span>200–400</span></div></div></div>
+                        <div class="proj-bar-row"><span class="proj-label">Month 2</span><div class="proj-bar-wrap"><div class="proj-bar" style="width: 38%; background: #2563eb;"><span>800–1,500</span></div></div></div>
+                        <div class="proj-bar-row"><span class="proj-label">Month 3</span><div class="proj-bar-wrap"><div class="proj-bar" style="width: 85%; background: var(--success);"><span>3,000–6,000+</span></div></div></div>
                     </div>
                     <p style="color:var(--text-muted); font-size:0.85rem; margin-top:1rem;">Month 3 traffic surge is driven by blog content indexing, press backlinks, neighborhood pages ranking, and review velocity compounding GBP authority.</p>
                 </div>
@@ -628,7 +868,6 @@
                             <h3>Month 1: Foundation & Crisis Response</h3>
                             <div class="month-goal">Goal: Fix all P1 technical errors. Claim GBP. Get schema live. Move menu on-domain.</div>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 1 — Highest ROI Actions</div>
                             <ul class="task-list">
@@ -638,7 +877,6 @@
                                 <li><i data-lucide="check"></i> <strong>Meta Description:</strong> Write and publish first meta description (currently none). Target: "Authentic Neapolitan pizza from a wood-fired oven at 2500 E Commercial Blvd, Fort Lauderdale. Fresh dough made daily. Family recipes from Naples."</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 2 — Technical Fixes + On-Domain Menu</div>
                             <ul class="task-list">
@@ -648,7 +886,6 @@
                                 <li><i data-lucide="check"></i> <strong>On-Domain Menu Page:</strong> Build <code>/menu</code> page on napuleatan.com. Structure with H2 per category ("Neapolitan Pizzas," "Italian Deli Sandwiches," "Pasta," "Desserts"). Write keyword-rich descriptions: "San Marzano tomatoes," "buffalo mozzarella," "wood-fired at 900°F," "imported from Naples." Keep YourMenu for the actual ordering flow — but the content must live on-domain for Google to index it.</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 3 — Schema Implementation</div>
                             <ul class="task-list">
@@ -657,7 +894,6 @@
                                 <li><i data-lucide="check"></i> <strong>About Page Rewrite:</strong> Expand from 225 words to 700+ words. H1: "Authentic Neapolitan Pizza, Made the Naples Way — Fort Lauderdale, FL." Tell the full family origin story, what makes Neapolitan pizza different (72-hour fermentation, 00 flour, 900°F oven), why Fort Lauderdale.</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 4 — FAQ Page + Citation Fixes</div>
                             <ul class="task-list">
@@ -677,7 +913,6 @@
                             <h3>Month 2: Content Expansion + Authority Building</h3>
                             <div class="month-goal">Goal: Build the content footprint. Launch neighborhood pages. Start review campaign. Secure first press mentions.</div>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 5 — Service Pages + Social Media Launch</div>
                             <ul class="task-list">
@@ -687,7 +922,6 @@
                                 <li><i data-lucide="instagram"></i> <strong>Social Media Kickoff — Facebook & Instagram:</strong> Set up consistent posting schedule: 3 posts per week on both Facebook and Instagram. Content built from photos sent by the owner — wood-fired oven shots, fresh dough prep, finished pizzas, Italian deli spreads. Each post includes keyword-rich captions ("authentic Neapolitan pizza," "wood-fired Fort Lauderdale"), location tags, and relevant hashtags (#fortlauderdalefood #napoletanpizza #southfloridaeats). Instagram Reels added when video is available. This social signal layer supports GBP authority and drives organic discovery from South Florida food audiences.</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 6 — Neighborhood Location Pages</div>
                             <ul class="task-list">
@@ -696,7 +930,6 @@
                                 <li><i data-lucide="check"></i> <strong>Lauderdale-by-the-Sea Page:</strong> <code>/pizza-near-lauderdale-by-the-sea</code> — Captures the beach community's pizza searches. La Cucina Cafe (the closest competitor there) has a thin website with no Neapolitan positioning.</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 7 — Review Campaign Launch + Press Outreach</div>
                             <ul class="task-list">
@@ -706,7 +939,6 @@
                                 <li><i data-lucide="check"></i> <strong>Visit Lauderdale Directory:</strong> Submit to visitlauderdale.com restaurant directory — free listing, DA-boosting backlink. Heritage, Pummarola, and Zuckerello's all appear here. NapulEATan does not.</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 8 — Blogging Starts + Gift Cards</div>
                             <ul class="task-list">
@@ -727,7 +959,6 @@
                             <h3>Month 3: Scale, Press & Traffic Push</h3>
                             <div class="month-goal">Goal: Reach 3,000–6,000 monthly organic visits. Secure minimum 3 press backlinks. Dominate the 33308 local pack. Push blog content into high-traffic informational rankings.</div>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 9 — High-Traffic Blog Content</div>
                             <ul class="task-list">
@@ -736,38 +967,33 @@
                                 <li><i data-lucide="check"></i> <strong>Blog Post 5:</strong> "Authentic Italian Food in Fort Lauderdale: What to Look For" — curated guide, educational tone, builds authority. Internal links to all major site pages.</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 10 — Influencer + Social Signals</div>
                             <ul class="task-list">
                                 <li><i data-lucide="check"></i> <strong>Food Blogger Invitations:</strong> Invite 5 Fort Lauderdale food bloggers and Instagram food accounts for hosted tastings. Each visit generates UGC content, Instagram posts tagging the location (social signals), and ideally a blog post linking back to napuleatan.com.</li>
                                 <li><i data-lucide="instagram"></i> <strong>Social Media — Month 3 Content Push:</strong> Increase posting frequency to 3x/week on both platforms. Feature behind-the-scenes content (dough prep, oven footage), seasonal specials, and customer repost content. Run a Facebook check-in incentive campaign to drive foot traffic and social proof simultaneously. Create a pinned Instagram highlight reel: "Our Story," "The Oven," "The Menu."</li>
-                                <li><i data-lucide="check"></i> <strong>Pompano Beach Location Page:</strong> <code>/pizza-near-pompano-beach</code> — extends the service area content footprint north. Pompano Beach is in the service area list and has its own neighborhood search volume.</li>
+                                <li><i data-lucide="check"></i> <strong>Pompano Beach Location Page:</strong> <code>/pizza-near-pompano-beach</code> — extends the service area content footprint north.</li>
                                 <li><i data-lucide="check"></i> <strong>Deerfield Beach Location Page:</strong> <code>/pizza-near-deerfield-beach</code> — same structure, extends reach further north up A1A corridor.</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 11 — Press Escalation + High-Authority Backlinks</div>
                             <ul class="task-list">
                                 <li><i data-lucide="check"></i> <strong>Miami New Times Pitch:</strong> Pitch "Best Pizza Fort Lauderdale" round-up for inclusion alongside Heritage and Luigi's. Miami New Times is the highest-authority food publication in South Florida — one mention earns a DA 70+ backlink and significant referral traffic.</li>
-                                <li><i data-lucide="check"></i> <strong>Sun Sentinel / New Times Broward:</strong> Pitch on the authentic Neapolitan family story angle — generational recipes, wood-fired oven, Italian family in Fort Lauderdale. This is a human-interest food story that local press covers.</li>
-                                <li><i data-lucide="check"></i> <strong>Blog Post 6:</strong> "Italian Catering in Fort Lauderdale: Everything You Need to Know" — 1,000+ words, targets "italian catering fort lauderdale" and related B2B terms. Supports the catering page with supplemental blog authority.</li>
-                                <li><i data-lucide="check"></i> <strong>Pompano Beach + Coral Springs Location Pages:</strong> Two more neighborhood pages expanding the geographic content footprint into the northernmost service area cities.</li>
+                                <li><i data-lucide="check"></i> <strong>Sun Sentinel / New Times Broward:</strong> Pitch on the authentic Neapolitan family story angle — generational recipes, wood-fired oven, Italian family in Fort Lauderdale.</li>
+                                <li><i data-lucide="check"></i> <strong>Blog Post 6:</strong> "Italian Catering in Fort Lauderdale: Everything You Need to Know" — 1,000+ words, targets "italian catering fort lauderdale" and related B2B terms.</li>
+                                <li><i data-lucide="check"></i> <strong>Pompano Beach + Coral Springs Location Pages:</strong> Two more neighborhood pages expanding the geographic content footprint.</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 12 — Traffic Audit + Month 4 Setup</div>
                             <ul class="task-list">
                                 <li><i data-lucide="check"></i> <strong>Google Search Console Review:</strong> Pull ranking data for all target keywords. Identify which pages are ranking on page 2 (positions 11–20) and push them to page 1 with targeted internal links and content refreshes.</li>
-                                <li><i data-lucide="check"></i> <strong>Blog Post 7:</strong> "Why Fresh Dough Makes All the Difference in Neapolitan Pizza" — educational content targeting the authenticity angle. 600+ words. Links to menu and about page.</li>
-                                <li><i data-lucide="check"></i> <strong>Event + Seasonal Content:</strong> Publish content around upcoming local events and holidays — "Best Italian Restaurant for Date Night Fort Lauderdale," "Holiday Catering Fort Lauderdale 2026." These capture seasonal search spikes.</li>
-                                <li><i data-lucide="check"></i> <strong>Loyalty Program Launch:</strong> Announce and implement a simple loyalty system (stamp card or email-based). Collect email addresses for an owned marketing channel. Run a "comeback" campaign to reactivate lapsed customers from the Yelp review period.</li>
+                                <li><i data-lucide="check"></i> <strong>Blog Post 7:</strong> "Why Fresh Dough Makes All the Difference in Neapolitan Pizza" — educational content targeting the authenticity angle. 600+ words.</li>
+                                <li><i data-lucide="check"></i> <strong>Event + Seasonal Content:</strong> Publish content around upcoming local events and holidays — "Best Italian Restaurant for Date Night Fort Lauderdale," "Holiday Catering Fort Lauderdale 2026."</li>
+                                <li><i data-lucide="check"></i> <strong>Loyalty Program Launch:</strong> Announce and implement a simple loyalty system (stamp card or email-based). Collect email addresses for an owned marketing channel.</li>
                             </ul>
                         </div>
-
-                        <!-- Month 3 traffic callout -->
                         <div class="month3-callout">
                             <div class="m3-icon"><i data-lucide="trending-up"></i></div>
                             <div>
@@ -786,128 +1012,67 @@
                             <h3>Month 4: Consolidation, Scaling & Retention</h3>
                             <div class="month-goal">Goal: Lock in page-1 rankings. Scale social media presence. Build repeat customer systems. Identify next keyword targets based on real GSC data.</div>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 13 — Rankings Audit + Content Refresh</div>
                             <ul class="task-list">
-                                <li><i data-lucide="check"></i> <strong>Full GSC Rankings Review:</strong> Pull all keyword positions from Search Console. Identify pages stuck at positions 11–20 ("page 2") — these are the highest-leverage targets. A targeted internal link from a high-authority page or a content expansion often moves them to page 1 within 2–3 weeks.</li>
-                                <li><i data-lucide="check"></i> <strong>Content Refresh Cycle:</strong> Update Month 1 blog posts with new images, additional FAQ pairs, and any new press mentions. Google rewards freshness signals — updating content renews the indexing priority.</li>
-                                <li><i data-lucide="instagram"></i> <strong>Social Media — Promotion Push:</strong> Launch a Facebook and Instagram promotion tied to a seasonal event or local holiday. Boost the best-performing post from Month 3 with a modest paid boost ($25–50) to expand reach to Fort Lauderdale food audience. All creative built from owner-supplied photos.</li>
+                                <li><i data-lucide="check"></i> <strong>Full GSC Rankings Review:</strong> Pull all keyword positions from Search Console. Identify pages stuck at positions 11–20 — these are the highest-leverage targets. A targeted internal link from a high-authority page or a content expansion often moves them to page 1 within 2–3 weeks.</li>
+                                <li><i data-lucide="check"></i> <strong>Content Refresh Cycle:</strong> Update Month 1 blog posts with new images, additional FAQ pairs, and any new press mentions. Google rewards freshness signals.</li>
+                                <li><i data-lucide="instagram"></i> <strong>Social Media — Promotion Push:</strong> Launch a Facebook and Instagram promotion tied to a seasonal event or local holiday. Boost the best-performing post from Month 3 with a modest paid boost ($25–50) to expand reach to Fort Lauderdale food audience.</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 14 — New Keyword Cluster Expansion</div>
                             <ul class="task-list">
-                                <li><i data-lucide="check"></i> <strong>Blog Post 8:</strong> "Best Places for Pizza Near Me in Fort Lauderdale 2026" — targets the highest-volume local search query in a list format. Internal links to neighborhood pages and catering page. Updated with real GSC data to match what people are actually searching.</li>
-                                <li><i data-lucide="check"></i> <strong>Blog Post 9:</strong> "Gluten-Free Pizza Options in Fort Lauderdale" — captures a high-intent dietary niche with very little competition. One well-written post can own this search term indefinitely.</li>
-                                <li><i data-lucide="instagram"></i> <strong>Social Media — UGC Campaign:</strong> Ask followers to tag NapulEATan in their food photos for a chance to be featured. Repost customer photos with permission on both Facebook and Instagram. User-generated content posts drive higher engagement than brand posts and generate free authentic content.</li>
+                                <li><i data-lucide="check"></i> <strong>Blog Post 8:</strong> "Best Places for Pizza Near Me in Fort Lauderdale 2026" — targets the highest-volume local search query in a list format. Updated with real GSC data to match what people are actually searching.</li>
+                                <li><i data-lucide="check"></i> <strong>Blog Post 9:</strong> "Gluten-Free Pizza Options in Fort Lauderdale" — captures a high-intent dietary niche with very little competition.</li>
+                                <li><i data-lucide="instagram"></i> <strong>Social Media — UGC Campaign:</strong> Ask followers to tag NapulEATan in their food photos for a chance to be featured. Repost customer photos with permission on both Facebook and Instagram.</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 15 — Email List + Loyalty Program</div>
                             <ul class="task-list">
-                                <li><i data-lucide="check"></i> <strong>Email List Activation:</strong> Begin collecting emails at checkout via the on-domain ordering system built in Month 1. Set up a simple welcome sequence: (1) welcome email with menu highlights, (2) "Come back" offer at 2 weeks, (3) loyalty program invite. This is a zero-cost retention channel that compounds every month.</li>
-                                <li><i data-lucide="check"></i> <strong>Loyalty Program Expansion:</strong> Move beyond the stamp card introduced in Month 3. Implement a digital loyalty system tied to the on-domain ordering page — points per order, birthday rewards, referral bonuses. Loyal customers are the most effective source of organic Google reviews.</li>
-                                <li><i data-lucide="instagram"></i> <strong>Social Media — Behind-the-Scenes Series:</strong> Produce a 4-part weekly Facebook + Instagram series: "The Making of NapulEATan." Week 1: the dough. Week 2: the oven. Week 3: the family story. Week 4: the sourcing (Italian imports). This type of branded story content builds genuine brand equity and is highly shareable in the South Florida food community.</li>
+                                <li><i data-lucide="check"></i> <strong>Email List Activation:</strong> Begin collecting emails at checkout via the on-domain ordering system. Set up a simple welcome sequence: (1) welcome email with menu highlights, (2) "Come back" offer at 2 weeks, (3) loyalty program invite.</li>
+                                <li><i data-lucide="check"></i> <strong>Loyalty Program Expansion:</strong> Move beyond the stamp card introduced in Month 3. Implement a digital loyalty system tied to the on-domain ordering page — points per order, birthday rewards, referral bonuses.</li>
+                                <li><i data-lucide="instagram"></i> <strong>Social Media — Behind-the-Scenes Series:</strong> Produce a 4-part weekly Facebook + Instagram series: "The Making of NapulEATan." Week 1: the dough. Week 2: the oven. Week 3: the family story. Week 4: the sourcing (Italian imports).</li>
                             </ul>
                         </div>
-
                         <div class="week-block">
                             <div class="week-label">Week 16 — Month 4 Results Review + Month 5 Planning</div>
                             <ul class="task-list">
                                 <li><i data-lucide="check"></i> <strong>4-Month Performance Report:</strong> Pull GA4 + GSC data. Document: total organic traffic, top-ranking keywords and their positions, GBP impressions and call volume, blog post traffic, review count growth, and backlink profile changes. Compare against Month 1 baseline (~50 visits/month).</li>
-                                <li><i data-lucide="check"></i> <strong>Press Follow-Up:</strong> Follow up on any outstanding pitches to Miami New Times, Sun Sentinel, and Edible South Florida. If press coverage was secured, submit the mention to Google News indexing and share across all social channels to maximize the backlink's referral traffic.</li>
-                                <li><i data-lucide="instagram"></i> <strong>Social Media — Month 5 Calendar:</strong> Plan next month's social content calendar using top-performing post formats from Months 2–4. Build a 12-post template for the upcoming month that includes product posts (3), behind-the-scenes (3), customer features (2), promotions (2), and community/local content (2).</li>
-                                <li><i data-lucide="check"></i> <strong>Boca Raton + Coral Springs Location Pages:</strong> Build 2 more neighborhood pages to extend the geographic keyword footprint to the outer service area. By Month 4, the domain has enough authority for these pages to rank within 30–45 days of publishing.</li>
+                                <li><i data-lucide="check"></i> <strong>Press Follow-Up:</strong> Follow up on any outstanding pitches to Miami New Times, Sun Sentinel, and Edible South Florida. Share any secured coverage across all social channels to maximize the backlink's referral traffic.</li>
+                                <li><i data-lucide="instagram"></i> <strong>Social Media — Month 5 Calendar:</strong> Plan next month's social content calendar using top-performing post formats from Months 2–4. Build a 12-post template: product posts (3), behind-the-scenes (3), customer features (2), promotions (2), community/local content (2).</li>
+                                <li><i data-lucide="check"></i> <strong>Boca Raton + Coral Springs Location Pages:</strong> Build 2 more neighborhood pages to extend the geographic keyword footprint to the outer service area.</li>
                             </ul>
                         </div>
-
                         <div class="month3-callout">
                             <div class="m3-icon"><i data-lucide="bar-chart-2"></i></div>
                             <div>
                                 <strong>What Month 4 Delivers</strong>
-                                <p>By the end of Month 4, NapulEATan has a fully compounding SEO engine: 9+ indexed blog posts generating consistent long-tail traffic, 5+ neighborhood pages capturing surrounding city searches, 3+ press backlinks boosting domain authority, a GBP with 80–100 reviews dominating the 33308 local pack, a social media presence with 3x/week content on Facebook and Instagram, and an email list building a direct customer marketing channel. The site is no longer dependent on any single channel — it has multiple independent traffic sources all pulling in the same direction.</p>
+                                <p>By the end of Month 4, NapulEATan has a fully compounding SEO engine: 9+ indexed blog posts generating consistent long-tail traffic, 5+ neighborhood pages capturing surrounding city searches, 3+ press backlinks boosting domain authority, a GBP with 80–100 reviews dominating the 33308 local pack, a social media presence with 3x/week content on Facebook and Instagram, and an email list building a direct customer marketing channel.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4-month target keywords table -->
             <div class="card" style="margin-top: 3rem;">
                 <h3>Target Keyword Rankings at 4 Months</h3>
                 <table class="data-table">
                     <thead>
-                        <tr>
-                            <th>Keyword</th>
-                            <th>Current Position</th>
-                            <th>4-Month Target</th>
-                            <th>Primary Driver</th>
-                        </tr>
+                        <tr><th>Keyword</th><th>Current Position</th><th>4-Month Target</th><th>Primary Driver</th></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>neapolitan pizza fort lauderdale</td>
-                            <td><span class="pos-badge bad">Not ranking</span></td>
-                            <td><span class="pos-badge good">Top 3 organic + local pack</span></td>
-                            <td>GBP + About page + schema</td>
-                        </tr>
-                        <tr>
-                            <td>wood fired pizza fort lauderdale</td>
-                            <td><span class="pos-badge bad">Not ranking</span></td>
-                            <td><span class="pos-badge good">Top 5 organic</span></td>
-                            <td>Menu page + About page + schema</td>
-                        </tr>
-                        <tr>
-                            <td>pizza commercial blvd fort lauderdale</td>
-                            <td><span class="pos-badge bad">Not ranking</span></td>
-                            <td><span class="pos-badge good">Local pack #1–2</span></td>
-                            <td>GBP proximity + citations + reviews</td>
-                        </tr>
-                        <tr>
-                            <td>authentic neapolitan pizza fort lauderdale</td>
-                            <td><span class="pos-badge bad">Not ranking</span></td>
-                            <td><span class="pos-badge good">Top 3</span></td>
-                            <td>About page (low competition keyword)</td>
-                        </tr>
-                        <tr>
-                            <td>italian restaurant fort lauderdale</td>
-                            <td><span class="pos-badge warn">Lower positions</span></td>
-                            <td><span class="pos-badge med">Top 10</span></td>
-                            <td>Title tag + content depth + backlinks</td>
-                        </tr>
-                        <tr>
-                            <td>pizza near oakland park</td>
-                            <td><span class="pos-badge bad">Not ranking</span></td>
-                            <td><span class="pos-badge good">Local pack top 3</span></td>
-                            <td>Neighborhood page + GBP</td>
-                        </tr>
-                        <tr>
-                            <td>pizza near wilton manors</td>
-                            <td><span class="pos-badge bad">Not ranking</span></td>
-                            <td><span class="pos-badge good">Local pack top 3</span></td>
-                            <td>Neighborhood page + GBP</td>
-                        </tr>
-                        <tr>
-                            <td>italian catering fort lauderdale</td>
-                            <td><span class="pos-badge bad">Not ranking</span></td>
-                            <td><span class="pos-badge good">Top 5</span></td>
-                            <td>Dedicated catering page</td>
-                        </tr>
-                        <tr>
-                            <td>best tiramisu fort lauderdale</td>
-                            <td><span class="pos-badge bad">Not ranking</span></td>
-                            <td><span class="pos-badge good">Top 5</span></td>
-                            <td>Blog post with FAQ schema</td>
-                        </tr>
-                        <tr>
-                            <td>pizza fort lauderdale</td>
-                            <td><span class="pos-badge bad">Not ranking top 20</span></td>
-                            <td><span class="pos-badge med">Top 10–15</span></td>
-                            <td>Domain authority growth via backlinks + reviews</td>
-                        </tr>
+                        <tr><td>neapolitan pizza fort lauderdale</td><td><span class="pos-badge bad">Not ranking</span></td><td><span class="pos-badge good">Top 3 organic + local pack</span></td><td>GBP + About page + schema</td></tr>
+                        <tr><td>wood fired pizza fort lauderdale</td><td><span class="pos-badge bad">Not ranking</span></td><td><span class="pos-badge good">Top 5 organic</span></td><td>Menu page + About page + schema</td></tr>
+                        <tr><td>pizza commercial blvd fort lauderdale</td><td><span class="pos-badge bad">Not ranking</span></td><td><span class="pos-badge good">Local pack #1–2</span></td><td>GBP proximity + citations + reviews</td></tr>
+                        <tr><td>authentic neapolitan pizza fort lauderdale</td><td><span class="pos-badge bad">Not ranking</span></td><td><span class="pos-badge good">Top 3</span></td><td>About page (low competition keyword)</td></tr>
+                        <tr><td>italian restaurant fort lauderdale</td><td><span class="pos-badge warn">Lower positions</span></td><td><span class="pos-badge med">Top 10</span></td><td>Title tag + content depth + backlinks</td></tr>
+                        <tr><td>pizza near oakland park</td><td><span class="pos-badge bad">Not ranking</span></td><td><span class="pos-badge good">Local pack top 3</span></td><td>Neighborhood page + GBP</td></tr>
+                        <tr><td>pizza near wilton manors</td><td><span class="pos-badge bad">Not ranking</span></td><td><span class="pos-badge good">Local pack top 3</span></td><td>Neighborhood page + GBP</td></tr>
+                        <tr><td>italian catering fort lauderdale</td><td><span class="pos-badge bad">Not ranking</span></td><td><span class="pos-badge good">Top 5</span></td><td>Dedicated catering page</td></tr>
+                        <tr><td>best tiramisu fort lauderdale</td><td><span class="pos-badge bad">Not ranking</span></td><td><span class="pos-badge good">Top 5</span></td><td>Blog post with FAQ schema</td></tr>
+                        <tr><td>pizza fort lauderdale</td><td><span class="pos-badge bad">Not ranking top 20</span></td><td><span class="pos-badge med">Top 10–15</span></td><td>Domain authority growth via backlinks + reviews</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -922,9 +1087,7 @@
 
             <div class="demo-container">
                 <div class="demo-phone">
-                    <div class="phone-header">
-                        <h4>NapulEATan Feedback</h4>
-                    </div>
+                    <div class="phone-header"><h4>NapulEATan Feedback</h4></div>
                     <div class="phone-body">
                         <div class="step step-1 active" id="step-rating">
                             <h3>Rate your visit</h3>
@@ -957,56 +1120,20 @@
 
                 <div>
                     <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">How the Filtering Works</h3>
-                    <div class="feature">
-                        <div class="feature-icon"><i data-lucide="smartphone"></i></div>
-                        <div>
-                            <h4>1. QR Code Scan</h4>
-                            <p style="color: var(--text-muted);">Customers scan a QR code on their table or receipt before leaving. No app download needed — opens directly in mobile browser.</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i data-lucide="arrow-up-right"></i></div>
-                        <div>
-                            <h4>2. 4–5 Stars Route to Google</h4>
-                            <p style="color: var(--text-muted);">Happy customers are immediately prompted with a direct link to the Google Business Profile review form. This dramatically increases positive review velocity — the #1 local pack ranking factor.</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i data-lucide="shield-alert"></i></div>
-                        <div>
-                            <h4>3. 1–3 Stars Are Intercepted</h4>
-                            <p style="color: var(--text-muted);">Unsatisfied customers are directed to a private text form. Feedback goes directly to management via email/SMS — never published online. Management can follow up and recover the relationship.</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i data-lucide="bar-chart-2"></i></div>
-                        <div>
-                            <h4>4. Review Velocity Compounds</h4>
-                            <p style="color: var(--text-muted);">Google's local pack algorithm rewards recency. Restaurants with 5+ new reviews per week rank above restaurants with 500 old reviews and no new activity. Consistent velocity beats raw count.</p>
-                        </div>
-                    </div>
+                    <div class="feature"><div class="feature-icon"><i data-lucide="smartphone"></i></div><div><h4>1. QR Code Scan</h4><p style="color: var(--text-muted);">Customers scan a QR code on their table or receipt before leaving. No app download needed — opens directly in mobile browser.</p></div></div>
+                    <div class="feature"><div class="feature-icon"><i data-lucide="arrow-up-right"></i></div><div><h4>2. 4–5 Stars Route to Google</h4><p style="color: var(--text-muted);">Happy customers are immediately prompted with a direct link to the Google Business Profile review form. This dramatically increases positive review velocity — the #1 local pack ranking factor.</p></div></div>
+                    <div class="feature"><div class="feature-icon"><i data-lucide="shield-alert"></i></div><div><h4>3. 1–3 Stars Are Intercepted</h4><p style="color: var(--text-muted);">Unsatisfied customers are directed to a private text form. Feedback goes directly to management via email/SMS — never published online. Management can follow up and recover the relationship.</p></div></div>
+                    <div class="feature"><div class="feature-icon"><i data-lucide="bar-chart-2"></i></div><div><h4>4. Review Velocity Compounds</h4><p style="color: var(--text-muted);">Google's local pack algorithm rewards recency. Restaurants with 5+ new reviews per week rank above restaurants with 500 old reviews and no new activity. Consistent velocity beats raw count.</p></div></div>
                 </div>
             </div>
 
             <div class="review-impact" style="margin-top: 3rem;">
                 <h3>Review Targets by Month</h3>
                 <div class="impact-grid">
-                    <div class="impact-item">
-                        <div class="impact-number">0→50</div>
-                        <div class="impact-desc">Google reviews target by end of Month 2. This is the threshold Google typically needs to show a business in the local 3-pack for competitive queries.</div>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-number">5+/wk</div>
-                        <div class="impact-desc">Review velocity target in Month 3. Weekly new reviews signal an active, popular business to Google's local ranking algorithm.</div>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-number">4.4+</div>
-                        <div class="impact-desc">Target Google rating at 90 days. The filtered system prevents new negative reviews from suppressing this score while building from the current Yelp 2.0 situation.</div>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-number">24hr</div>
-                        <div class="impact-desc">Response time target for every Google review. Google tracks response rate and speed as a GBP quality signal.</div>
-                    </div>
+                    <div class="impact-item"><div class="impact-number">0→50</div><div class="impact-desc">Google reviews target by end of Month 2. This is the threshold Google typically needs to show a business in the local 3-pack for competitive queries.</div></div>
+                    <div class="impact-item"><div class="impact-number">5+/wk</div><div class="impact-desc">Review velocity target in Month 3. Weekly new reviews signal an active, popular business to Google's local ranking algorithm.</div></div>
+                    <div class="impact-item"><div class="impact-number">4.4+</div><div class="impact-desc">Target Google rating at 90 days. The filtered system prevents new negative reviews from suppressing this score while building from the current Yelp 2.0 situation.</div></div>
+                    <div class="impact-item"><div class="impact-number">24hr</div><div class="impact-desc">Response time target for every Google review. Google tracks response rate and speed as a GBP quality signal.</div></div>
                 </div>
             </div>
         </section>
@@ -1020,7 +1147,6 @@
                 <p>A structured 4-month engagement designed to build a permanent SEO foundation, establish social media presence, and deliver measurable ranking results — with clear deliverables at every stage.</p>
             </div>
             <div class="pricing-grid">
-                <!-- Month 1 -->
                 <div class="pricing-card card">
                     <div class="pricing-badge month1-badge">Month 1</div>
                     <div class="pricing-amount">$700</div>
@@ -1039,8 +1165,6 @@
                         <li><i data-lucide="check-circle"></i> Weekly GBP posting cadence starts</li>
                     </ul>
                 </div>
-
-                <!-- Months 2–4 -->
                 <div class="pricing-card card pricing-featured">
                     <div class="pricing-badge recurring-badge">Months 2 · 3 · 4</div>
                     <div class="pricing-amount">$900<span class="pricing-per">/mo</span></div>
@@ -1065,70 +1189,82 @@
                 </div>
             </div>
 
-            <!-- Total investment summary -->
             <div class="pricing-summary card">
                 <div class="pricing-summary-grid">
-                    <div class="summary-item">
-                        <div class="summary-label">Month 1 — Foundation</div>
-                        <div class="summary-amount">$700</div>
-                    </div>
+                    <div class="summary-item"><div class="summary-label">Month 1 — Foundation</div><div class="summary-amount">$700</div></div>
                     <div class="summary-divider">+</div>
-                    <div class="summary-item">
-                        <div class="summary-label">Month 2 — Growth & Social</div>
-                        <div class="summary-amount">$900</div>
-                    </div>
+                    <div class="summary-item"><div class="summary-label">Month 2 — Growth & Social</div><div class="summary-amount">$900</div></div>
                     <div class="summary-divider">+</div>
-                    <div class="summary-item">
-                        <div class="summary-label">Month 3 — Traffic Push</div>
-                        <div class="summary-amount">$900</div>
-                    </div>
+                    <div class="summary-item"><div class="summary-label">Month 3 — Traffic Push</div><div class="summary-amount">$900</div></div>
                     <div class="summary-divider">+</div>
-                    <div class="summary-item">
-                        <div class="summary-label">Month 4 — Consolidation</div>
-                        <div class="summary-amount">$900</div>
-                    </div>
+                    <div class="summary-item"><div class="summary-label">Month 4 — Consolidation</div><div class="summary-amount">$900</div></div>
                     <div class="summary-divider">=</div>
-                    <div class="summary-item summary-total">
-                        <div class="summary-label">4-Month Total Investment</div>
-                        <div class="summary-amount">$3,400</div>
-                    </div>
+                    <div class="summary-item summary-total"><div class="summary-label">4-Month Total Investment</div><div class="summary-amount">$3,400</div></div>
                 </div>
             </div>
 
-            <!-- What's included callout boxes -->
             <div class="pricing-callouts">
-                <div class="pricing-callout">
-                    <div class="pc-icon"><i data-lucide="search"></i></div>
-                    <h4>SEO & Technical</h4>
-                    <p>Full technical audit fixes, schema markup, content creation, keyword optimization, backlink building, press outreach, and monthly Search Console reporting.</p>
-                </div>
-                <div class="pricing-callout">
-                    <div class="pc-icon"><i data-lucide="instagram"></i></div>
-                    <h4>Facebook & Instagram</h4>
-                    <p>3 posts per week on each platform, every week of Months 2–4. We design the posts using photos you supply, write captions with location and keyword optimization, and schedule everything.</p>
-                </div>
-                <div class="pricing-callout">
-                    <div class="pc-icon"><i data-lucide="star"></i></div>
-                    <h4>Review System</h4>
-                    <p>Filtered review collection setup, QR code generation, staff training script, Google review response management, and monthly review velocity tracking.</p>
-                </div>
-                <div class="pricing-callout">
-                    <div class="pc-icon"><i data-lucide="bar-chart-2"></i></div>
-                    <h4>Monthly Reporting</h4>
-                    <p>GA4 + Google Search Console report every month showing keyword rankings, organic traffic growth, GBP impressions, social reach, and what's planned next.</p>
-                </div>
+                <div class="pricing-callout"><div class="pc-icon"><i data-lucide="search"></i></div><h4>SEO & Technical</h4><p>Full technical audit fixes, schema markup, content creation, keyword optimization, backlink building, press outreach, and monthly Search Console reporting.</p></div>
+                <div class="pricing-callout"><div class="pc-icon"><i data-lucide="instagram"></i></div><h4>Facebook & Instagram</h4><p>3 posts per week on each platform, every week of Months 2–4. We design the posts using photos you supply, write captions with location and keyword optimization, and schedule everything.</p></div>
+                <div class="pricing-callout"><div class="pc-icon"><i data-lucide="star"></i></div><h4>Review System</h4><p>Filtered review collection setup, QR code generation, staff training script, Google review response management, and monthly review velocity tracking.</p></div>
+                <div class="pricing-callout"><div class="pc-icon"><i data-lucide="bar-chart-2"></i></div><h4>Monthly Reporting</h4><p>GA4 + Google Search Console report every month showing keyword rankings, organic traffic growth, GBP impressions, social reach, and what's planned next.</p></div>
             </div>
-            </div><!-- /pricing-inner -->
+            </div>
         </section>
-    </main>
 
     <footer>
         <p>&copy; 2026 PALM Web Miami LLC. Confidential Strategy Report — Prepared for NapulEATan Pizzeria & Deli.</p>
     </footer>
 
-    <script src="script.js"></script>
     <script>
-        lucide.createIcons();
+// Initialize Lucide Icons
+lucide.createIcons();
+
+// Scroll Reveal Animation
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
+    }
+}
+window.addEventListener("scroll", reveal);
+reveal();
+
+// Filtered Review Demo Logic
+document.addEventListener("DOMContentLoaded", () => {
+    const stars = document.querySelectorAll(".stars i");
+    const stepRating = document.getElementById("step-rating");
+    const stepPositive = document.getElementById("step-positive");
+    const stepNegative = document.getElementById("step-negative");
+    const resetBtns = document.querySelectorAll(".reset-demo");
+
+    stars.forEach(star => {
+        star.addEventListener("click", () => {
+            const rating = parseInt(star.getAttribute("data-rating"));
+            stepRating.classList.remove("active");
+            if (rating >= 4) {
+                stepPositive.classList.add("active");
+            } else {
+                stepNegative.classList.add("active");
+            }
+        });
+    });
+
+    resetBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            stepPositive.classList.remove("active");
+            stepNegative.classList.remove("active");
+            stars.forEach(s => s.classList.remove('filled'));
+            stepRating.classList.add("active");
+        });
+    });
+});
     </script>
 </body>
 </html>
